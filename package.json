@@ -1,0 +1,11 @@
+{
+  "name": "mmsmaker",
+  "version": "1.0.0",
+  "description": "mmsmaker for kitchen",
+  "main": "index.js",
+  "author": "babyazalea",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
