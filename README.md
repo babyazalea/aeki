@@ -1,7 +1,7 @@
-# making mms-maker for kitchen
+# making online task manager for aeki
 
 - [ ] express server
-- [ ] use SheetJS
+- [ ] use SheetJS if can
 - [ ] drag & drop file
 - [ ] parsing excel file
-- [ ] making sentence for message
+- [ ] CRUD for any list
