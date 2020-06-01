@@ -1,4 +1,6 @@
 extends layouts/main
 
 block content
+    form(action=`/installation${routes.searchInstallation}`, method="get")
+        input(type="text", placeholder="Search by term...", name="term")
     p installation!!!!

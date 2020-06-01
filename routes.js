@@ -28,7 +28,7 @@ const routes = {
   users: USERS,
   userDetail: USER_DETAIL,
   editProfile: EDIT_PROFILE,
-  changePaswword: CHANEGE_PASSWORD,
+  changePassword: CHANEGE_PASSWORD,
   installation: INSTALLATION,
   searchInstallation: SEARCH_INSTALLATION,
   createInstallation: CREATE_INSTALLATION,

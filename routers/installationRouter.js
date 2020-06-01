@@ -11,11 +11,10 @@ import {
 
 const installationRouter = express.Router();
 
-installationRouter.get(routes.installation, installation);
 installationRouter.get(routes.searchInstallation, searchInstallation);
 installationRouter.get(routes.createInstallation, createInstallation);
-installationRouter.get(routes.installationDetail, installationDetail);
 installationRouter.get(routes.editInstallation, editInstallation);
 installationRouter.get(routes.deleteInstallation, deleteInstallation);
+installationRouter.get(routes.installationDetail, installationDetail);
 
 export default installationRouter;
