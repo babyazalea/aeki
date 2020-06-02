@@ -1,5 +1,8 @@
-export const installation = (req, res) =>
-  res.render("installation", { pageTitle: "Installation" });
+import { installations, countertops } from "../db";
+export const installation = (req, res) => {
+  res.render("installation", { pageTitle: "Installation", installations });
+};
+
 export const searchInstallation = (req, res) => {
   const {
     query: { term: searchingBy },
@@ -9,8 +12,17 @@ export const searchInstallation = (req, res) => {
     searchingBy,
   });
 };
-export const createInstallation = (req, res) =>
-  res.render("createInstallation", { pageTitle: "Create Installation" });
+
+export const getCreateInstallation = (req, res) => {
+  res.render("createInstallation", {
+    pageTitle: "Create Installation",
+    countertops,
+  });
+};
+export const postCreateInstallation = (req, res) => {
+  const { body } = req;
+};
+
 export const installationDetail = (req, res) =>
   res.render("installationDetail");
 export const editInstallation = (req, res) =>

@@ -1,4 +1,111 @@
 extends layouts/main
-
+include mixins/countertopBlock
 block content
-    p lest create installation!!!!
+    form(action=`/installation${routes.createInstallation}`, method="post")
+        table
+                th  Create Date
+                    tr
+                        td
+                            label(for="createDate")
+                            input(type="date", value=currentDate, name="createDate")
+                th(colspan="4") 고객정보
+                    tr
+                        td.customerLine 고객명
+                        td.customerLine
+                            input(type="text",placeholder="Customer Name", name="customerName")
+                        td.customerLine 연락처
+                        td.customerLine
+                            input(type="tel", placeholder="Customer Phone", name="customerPhone")
+                    tr
+                        td.customerLine iSell no.
+                        td.customerLine
+                            input(type="number", placeholder="iSell no.", name="isellNumber")
+                        td.customerLine IHP
+                        td.customerLine 
+                            input(type="text", placeholder="IHP", name="ihpNumber")
+                    tr
+                        td.customerLine 주소
+                        td.customerLine(colspan="3")
+                            input(type="text", placeholder="Installation Address", name="installationAddress")
+                th(colspan="4") 서비스 내용
+                    tr
+                        td.customerLine 예약 배송일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="reservationDate")   
+                    tr
+                        td.customerLine 실제 배송일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="deliveryDate")   
+                    tr
+                        td.customerLine METOD 설치일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="installaionDate")
+                    tr
+                        td.customerLine METOD 설치 비용
+                        td.customerLine(colspan="3")
+                            input(type="text", name="installationCost")
+                            span 원
+                    tr
+                        td.customerLine CMW 설치일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="cmwDate")
+                    tr
+                        td.customerLine CMW 설치 비용
+                        td.customerLine
+                            input(type="text", name="cmwInstallationCost")
+                            span 원
+                        td.customerLine CMW 재료 비용
+                        td.customerLine
+                            input(type="text", name="cmwCost")
+                            span 원
+                th(colspan="4") 조리대/싱크/쿡탑
+                    tr
+                        td.customerLine 조리대
+                        td.customerLine(colspan="3")
+                            select(name="countertop")
+                                each item in countertops
+                                    +countertopBlock({
+                                        name:item.name
+                                    })
+                    tr   
+                        td.customerLine 싱크 & 수전
+                        td.customerLine
+                            input(type="text", name="sink")
+                            input(type="text", name="tap")
+                        td.customerLine 시공 방식
+                        td.customerLine
+                            select(name="howToSink")
+                                option(value="insertion") 삽입식
+                                option(value="adhesive") 접칙식
+                    tr
+                        td.customerLine 쿡탑
+                        td.customerLine(colspan="3")
+                            input(type="text", name="cooktop")
+                th(colspan="4") 후드/조명
+                    tr
+                        td.customerLine 후드
+                        td.customerLine
+                            input(type="text", name="hood")
+                        td.customerLine 조명
+                        td.customerLine
+                            select(name="lighting")
+                                option(value="dontLighting") ⭕
+                                option(value="doLighting") ❌
+                th(colspan="4") 변경 사항
+                    tr
+                        td.customerLine(colspan="4")
+                            textarea.changeText
+                th(colspan="4") 미구매
+                    tr
+                        td.customerLine article no.
+                        td.customerLine(colspan="3") 제품명
+                    tr
+                        td.customerLine
+                            input(type="number", name="articleNumber")
+                        td.customerLine(colspan="3")
+                            input(type="text", name="articleName")
+                    //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
+                th(colspan="4") 특이 사항
+                    tr
+                        td.customerLine(colspan="4")
+                            textarea.singularityText

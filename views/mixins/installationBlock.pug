@@ -1,0 +1,9 @@
+mixin installationBlock(installation ={})
+    .installationBlock
+        a(href=routes.installationDetail(installation.id))
+            span.create_date=installation.createDate
+            span.customer_name=installation.customerName
+            span.install_date=installation.installDate
+            span.counter_top=installation.countertop
+            span.door_name=installation.doorName
+            span.customer_address=installation.customerAddress

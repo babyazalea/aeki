@@ -26,13 +26,25 @@ const routes = {
   login: LOGIN,
   logout: LOGOUT,
   users: USERS,
-  userDetail: USER_DETAIL,
+  userDetail: (id) => {
+    if (id) {
+      return `/users/${id}`;
+    } else {
+      return USER_DETAIL;
+    }
+  },
   editProfile: EDIT_PROFILE,
   changePassword: CHANEGE_PASSWORD,
   installation: INSTALLATION,
   searchInstallation: SEARCH_INSTALLATION,
   createInstallation: CREATE_INSTALLATION,
-  installationDetail: INSTALLATION_DETAIL,
+  installationDetail: (id) => {
+    if (id) {
+      return `/installation/${id}`;
+    } else {
+      return INSTALLATION_DETAIL;
+    }
+  },
   editInstallation: EDIT_INSTALLATION,
   deleteInstallation: DELETE_INSTALLATION,
 };

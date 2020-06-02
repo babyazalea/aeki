@@ -1,6 +1,19 @@
 extends layouts/main
+include mixins/installationBlock
 
 block content
     form(action=`/installation${routes.searchInstallation}`, method="get")
         input(type="text", placeholder="Search by term...", name="term")
-    p installation!!!!
+    .installations
+        a.create__installation(href=`/installation${routes.createInstallation}`)
+            h4.create__installation__text Create Installation
+        each item in installations
+            +installationBlock({
+                id:item.id,
+                createDate:item.createDate,
+                customerName:item.customerName,
+                installDate:item.installDate,
+                countertop:item.countertop,
+                doorName:item.doorName,
+                costomerAddress:item.customerAddress
+            })
