@@ -1,6 +1,18 @@
-import { installations, countertops } from "../db";
-export const installation = (req, res) => {
-  res.render("installation", { pageTitle: "Installation", installations });
+import { countertops } from "../fakeDb";
+import Installation from "../models/Installation";
+import routes from "../routes";
+
+export const installation = async (req, res) => {
+  try {
+    const installations = await Installation.find({});
+    res.render("installation", { pageTitle: "Installation", installations });
+  } catch (error) {
+    console.log(error);
+    res.render("installation", {
+      pageTitle: "Installation",
+      installations: [],
+    });
+  }
 };
 
 export const searchInstallation = (req, res) => {
@@ -19,8 +31,65 @@ export const getCreateInstallation = (req, res) => {
     countertops,
   });
 };
-export const postCreateInstallation = (req, res) => {
-  const { body } = req;
+export const postCreateInstallation = async (req, res) => {
+  const {
+    body: {
+      createDate,
+      customerName,
+      customerPhone,
+      isellNumber,
+      ihpNumber,
+      installationAddress,
+      reservationDate,
+      deliveryDate,
+      installaionDate,
+      installationCost,
+      cmwDate,
+      cmwInstallationCost,
+      cmwCost,
+      countertop,
+      sink,
+      tap,
+      howToSink,
+      cooktop,
+      hood,
+      lighting,
+      changeText,
+      articleNumber,
+      articleName,
+      singularityText,
+    },
+  } = req;
+  const newInstallation = await Installation.create({
+    createDate,
+    customerName,
+    customerPhone,
+    isellNumber,
+    ihpNumber,
+    installationAddress,
+    reservationDate,
+    deliveryDate,
+    installaionDate,
+    installationCost,
+    cmwDate,
+    cmwInstallationCost,
+    cmwCost,
+    countertop,
+    sink,
+    tap,
+    howToSink,
+    cooktop,
+    hood,
+    lighting,
+    changeText,
+    articleNumber,
+    articleName,
+    singularityText,
+  });
+  console.log(newInstallation);
+
+  // To Do: Upload and save Installation
+  res.redirect(routes.installationDetail(newInstallation.id));
 };
 
 export const installationDetail = (req, res) =>

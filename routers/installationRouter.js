@@ -8,13 +8,18 @@ import {
   getCreateInstallation,
   postCreateInstallation,
 } from "../controllers/installationController";
+import { uploadInstallation } from "../middlewares";
 
 const installationRouter = express.Router();
 
 installationRouter.get(routes.searchInstallation, searchInstallation);
 
 installationRouter.get(routes.createInstallation, getCreateInstallation);
-installationRouter.post(routes.createInstallation, postCreateInstallation);
+installationRouter.post(
+  routes.createInstallation,
+  uploadInstallation,
+  postCreateInstallation
+);
 
 installationRouter.get(routes.editInstallation, editInstallation);
 installationRouter.get(routes.deleteInstallation, deleteInstallation);
