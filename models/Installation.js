@@ -52,6 +52,7 @@ const InstallationSchema = new mongoose.Schema({
   hood: String,
   lighting: String,
   changeText: String,
+  unfinished: Boolean,
   articleNumber: Number,
   articleName: String,
   singularityText: String,

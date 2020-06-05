@@ -78,8 +78,9 @@ block content
                         td.customerLine
                             select(name="howToSink")
                                 option(value="") Please Choose an option
+                                option(value="thirdParty") 타사
                                 option(value="insertion") 삽입식
-                                option(value="adhesive") 접칙식
+                                option(value="adhesive") 접착식
                     tr
                         td.customerLine 쿡탑
                         td.customerLine(colspan="3")
@@ -101,7 +102,7 @@ block content
                 th(colspan="3") 미구매
                     td
                         label(for="unfinished") 미구매 없음
-                        input(type="checkbox", value="unfinished")
+                        input(type="checkbox", value="true", name="unfinished")
                     tr
                         td.customerLine article no.
                         td.customerLine(colspan="3") 제품명

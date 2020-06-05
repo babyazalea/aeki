@@ -55,6 +55,7 @@ export const postCreateInstallation = async (req, res) => {
       hood,
       lighting,
       changeText,
+      unfinished,
       articleNumber,
       articleName,
       singularityText,
@@ -82,18 +83,32 @@ export const postCreateInstallation = async (req, res) => {
     hood,
     lighting,
     changeText,
+    unfinished,
     articleNumber,
     articleName,
     singularityText,
   });
   console.log(newInstallation);
 
-  // To Do: Upload and save Installation
   res.redirect(routes.installationDetail(newInstallation.id));
 };
 
-export const installationDetail = (req, res) =>
-  res.render("installationDetail");
+export const installationDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const installation = await Installation.findById(id);
+    res.render("installationDetail", {
+      pageTitle: "Installation Detail",
+      installation,
+    });
+    console.log(installation);
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
+};
 export const editInstallation = (req, res) =>
   res.render("editInstallation", { pageTitle: "Edit Installation" });
 export const deleteInstallation = (req, res) =>

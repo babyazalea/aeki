@@ -8,7 +8,7 @@ export const loacalsMiddleware = (req, res, next) => {
   res.locals.siteName = "AEKI";
   res.locals.routes = routes;
 
-  res.locals.goodDate = date;
+  res.locals.dateFormatter = date;
   res.locals.currentDate = date.asString("yyyy-MM-dd", new Date());
 
   res.locals.user = {
