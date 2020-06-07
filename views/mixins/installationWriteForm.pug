@@ -38,7 +38,7 @@ mixin installationWriteForm
             td.customerLine METOD 설치일
             td.customerLine(colspan="3")
                 if installation.installaionDate
-                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.installaionDate), name="deliveryDate", required=true)
+                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.installaionDate), name="installaionDate", required=true)
                 else
                     input(type="date", value=currentDate, name="installaionDate", required=true)
         tr
@@ -50,7 +50,7 @@ mixin installationWriteForm
             td.customerLine CMW 설치일
             td.customerLine(colspan="3")
                 if installation.cmwDate
-                    input(type="text", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="installationCost", required=true)
+                    input(type="text", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
                 else
                     input(type="date", value=currentDate, name="cmwDate", required=true)
         tr
