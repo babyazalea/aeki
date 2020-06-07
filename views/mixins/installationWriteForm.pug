@@ -1,0 +1,130 @@
+include countertopBlock
+mixin installationWriteForm
+    th(colspan="4") 고객정보
+        tr
+            td.customerLine 고객명
+            td.customerLine
+                input(type="text",value=installation.customerName, name="customerName", required=true)
+            td.customerLine 연락처
+            td.customerLine
+                input(type="tel",value=installation.customerPhone, name="customerPhone", required=true)
+        tr
+            td.customerLine iSell no.
+            td.customerLine
+                input(type="number",value=installation.isellNumber, name="isellNumber", required=true)
+            td.customerLine IHP
+            td.customerLine 
+                input(type="text",value=installation.ihpNumber, name="ihpNumber", required=true)
+        tr
+            td.customerLine 주소
+            td.customerLine(colspan="3")
+                input(type="text",value=installation.installationAddress, name="installationAddress", required=true)
+    th(colspan="4") 서비스 내용
+        tr
+            td.customerLine 예약 배송일
+            td.customerLine(colspan="3")
+                if installation.reservationDate
+                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.reservationDate), name="reservationDate", required=true)
+                else
+                    input(type="date", value=currentDate, name="reservationDate", required=true)
+        tr
+            td.customerLine 실제 배송일
+            td.customerLine(colspan="3")
+                if installation.deliveryDate
+                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.deliveryDate), name="deliveryDate", required=true)   
+                else
+                    input(type="date", value=currentDate, name="deliveryDate", required=true)   
+        tr
+            td.customerLine METOD 설치일
+            td.customerLine(colspan="3")
+                if installation.installaionDate
+                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.installaionDate), name="deliveryDate", required=true)
+                else
+                    input(type="date", value=currentDate, name="installaionDate", required=true)
+        tr
+            td.customerLine METOD 설치 비용
+            td.customerLine(colspan="3")
+                input(type="text", value=installation.installationCost, name="installationCost", required=true)
+                span 원
+        tr
+            td.customerLine CMW 설치일
+            td.customerLine(colspan="3")
+                if installation.cmwDate
+                    input(type="text", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="installationCost", required=true)
+                else
+                    input(type="date", value=currentDate, name="cmwDate", required=true)
+        tr
+            td.customerLine CMW 설치 비용
+            td.customerLine
+                input(type="text", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
+                span 원
+            td.customerLine CMW 재료 비용
+            td.customerLine
+                input(type="text", value=installation.cmwCost, name="cmwCost", required=true)
+                span 원
+    th(colspan="4") 조리대/싱크/쿡탑
+        tr
+            td.customerLine 조리대
+            td.customerLine(colspan="3")
+                select(name="countertop")
+                    each item in countertops
+                        +countertopBlock({
+                            name:item.name
+                        })
+        tr   
+            td.customerLine 싱크 & 수전
+            td.customerLine
+                input(type="text", value=installation.sink, name="sink", required=true)
+                input(type="text", value=installation.tap, name="tap", required=true)
+            td.customerLine 시공 방식
+            td.customerLine
+                select(name="howToSink")
+                    option(value="") Please Choose an option
+                    option(value="thirdParty") 타사
+                    option(value="insertion") 삽입식
+                    option(value="adhesive") 접착식
+        tr
+            td.customerLine 쿡탑
+            td.customerLine(colspan="3")
+                input(type="text", value=installation.cooktop, name="cooktop", required=true)
+    th(colspan="4") 후드/조명
+        tr
+            td.customerLine 후드
+            td.customerLine
+                input(type="text", value=installation.hood, name="hood", required=true)
+            td.customerLine 조명
+            td.customerLine
+                select(name="lighting")
+                    option(value="dontLighting") ❌
+                    option(value="doLighting") ⭕
+    th(colspan="4") 변경 사항
+        tr
+            td.customerLine(colspan="4")
+                textarea(name="changeText")=installation.changeText
+    th(colspan="3") 미구매
+        td
+            label(for="unfinished") 미구매 없음
+            if installation.unfinished
+                input(type="checkbox", value="true", name="unfinished", checked)
+            else
+                input(type="checkbox", value="true", name="unfinished")
+        tr
+            td.customerLine article no.
+            td.customerLine(colspan="3") 제품명
+        tr
+            td.customerLine
+                if installation.articleNumber
+                    span=installation.articleNumber
+                else
+                    input(type="number", name="articleNumber")
+            td.customerLine(colspan="3")
+                if installation.articleName
+                    span=installation.articleName
+                else
+                    input(type="text", name="articleName")
+        //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
+        //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
+    th(colspan="4") 특이 사항
+        tr
+            td.customerLine(colspan="4")
+                textarea(name="singularityText")=installation.singularityText

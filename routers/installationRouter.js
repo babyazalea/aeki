@@ -2,11 +2,12 @@ import express from "express";
 import routes from "../routes";
 import {
   installationDetail,
-  editInstallation,
   deleteInstallation,
   searchInstallation,
   getCreateInstallation,
   postCreateInstallation,
+  getEditInstallation,
+  postEditInstallation,
 } from "../controllers/installationController";
 import { uploadInstallation } from "../middlewares";
 
@@ -21,8 +22,10 @@ installationRouter.post(
   postCreateInstallation
 );
 
-installationRouter.get(routes.editInstallation, editInstallation);
-installationRouter.get(routes.deleteInstallation, deleteInstallation);
 installationRouter.get(routes.installationDetail(), installationDetail);
+
+installationRouter.get(routes.editInstallation(), getEditInstallation);
+installationRouter.post(routes.editInstallation(), postEditInstallation);
+installationRouter.get(routes.deleteInstallation(), deleteInstallation);
 
 export default installationRouter;

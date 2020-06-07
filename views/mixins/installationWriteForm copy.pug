@@ -1,0 +1,118 @@
+include countertopBlock
+mixin installationWriteForm(installation={})
+    .installation_write_form
+        form(action=`/installation${routes.createInstallation}`, method="post", enctype="multipart/form-data")
+        table
+                th  Create Date
+                    tr
+                        td
+                            label(for="createDate")
+                            input(type="date", value=currentDate, name="createDate")
+                        td(colspan="3")
+                            input(type="submit", value="Create Installation", required=true)    
+                th(colspan="4") 고객정보
+                    tr
+                        td.customerLine 고객명
+                        td.customerLine
+                            input(type="text",value=installation.customerName, name="customerName", required=true)
+                        td.customerLine 연락처
+                        td.customerLine
+                            input(type="tel",value=installation.customerPhone, name="customerPhone", required=true)
+                    tr
+                        td.customerLine iSell no.
+                        td.customerLine
+                            input(type="number",value=installation.isellNumber, name="isellNumber", required=true)
+                        td.customerLine IHP
+                        td.customerLine 
+                            input(type="text",value=installation.ihpNumver, name="ihpNumber", required=true)
+                    tr
+                        td.customerLine 주소
+                        td.customerLine(colspan="3")
+                            input(type="text",value=installation.installationAddress, name="installationAddress", required=true)
+                th(colspan="4") 서비스 내용
+                    tr
+                        td.customerLine 예약 배송일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="reservationDate", required=true)   
+                    tr
+                        td.customerLine 실제 배송일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="deliveryDate", required=true)   
+                    tr
+                        td.customerLine METOD 설치일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="installaionDate", required=true)
+                    tr
+                        td.customerLine METOD 설치 비용
+                        td.customerLine(colspan="3")
+                            input(type="text", name="installationCost", required=true)
+                            span 원
+                    tr
+                        td.customerLine CMW 설치일
+                        td.customerLine(colspan="3")
+                            input(type="date", value=currentDate, name="cmwDate", required=true)
+                    tr
+                        td.customerLine CMW 설치 비용
+                        td.customerLine
+                            input(type="text", name="cmwInstallationCost", required=true)
+                            span 원
+                        td.customerLine CMW 재료 비용
+                        td.customerLine
+                            input(type="text", name="cmwCost", required=true)
+                            span 원
+                th(colspan="4") 조리대/싱크/쿡탑
+                    tr
+                        td.customerLine 조리대
+                        td.customerLine(colspan="3")
+                            select(name="countertop")
+                                each item in countertops
+                                    +countertopBlock({
+                                        name:item.name
+                                    })
+                    tr   
+                        td.customerLine 싱크 & 수전
+                        td.customerLine
+                            input(type="text", name="sink", required=true)
+                            input(type="text", name="tap", required=true)
+                        td.customerLine 시공 방식
+                        td.customerLine
+                            select(name="howToSink")
+                                option(value="") Please Choose an option
+                                option(value="thirdParty") 타사
+                                option(value="insertion") 삽입식
+                                option(value="adhesive") 접착식
+                    tr
+                        td.customerLine 쿡탑
+                        td.customerLine(colspan="3")
+                            input(type="text", name="cooktop", required=true)
+                th(colspan="4") 후드/조명
+                    tr
+                        td.customerLine 후드
+                        td.customerLine
+                            input(type="text", name="hood", required=true)
+                        td.customerLine 조명
+                        td.customerLine
+                            select(name="lighting")
+                                option(value="dontLighting") ❌
+                                option(value="doLighting") ⭕
+                th(colspan="4") 변경 사항
+                    tr
+                        td.customerLine(colspan="4")
+                            textarea(name="changeText")
+                th(colspan="3") 미구매
+                    td
+                        label(for="unfinished") 미구매 없음
+                        input(type="checkbox", value="true", name="unfinished")
+                    tr
+                        td.customerLine article no.
+                        td.customerLine(colspan="3") 제품명
+                    tr
+                        td.customerLine
+                            input(type="number", name="articleNumber")
+                        td.customerLine(colspan="3")
+                            input(type="text", name="articleName")
+                    //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
+                th(colspan="4") 특이 사항
+                    tr
+                        td.customerLine(colspan="4")
+                            textarea(name="singularityText")

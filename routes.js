@@ -45,8 +45,20 @@ const routes = {
       return INSTALLATION_DETAIL;
     }
   },
-  editInstallation: EDIT_INSTALLATION,
-  deleteInstallation: DELETE_INSTALLATION,
+  editInstallation: (id) => {
+    if (id) {
+      return `/installation/${id}/edit`;
+    } else {
+      return EDIT_INSTALLATION;
+    }
+  },
+  deleteInstallation: (id) => {
+    if (id) {
+      return `/installation/${id}/delete`;
+    } else {
+      return DELETE_INSTALLATION;
+    }
+  },
 };
 
 export default routes;

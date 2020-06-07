@@ -1,0 +1,9 @@
+mixin installationListBlock(installationItem ={})
+    .installation_list_block
+        a(href=routes.installationDetail(installationItem.id))
+            span.create_date=dateFormatter("yy-MM-dd",installationItem.createDate)
+            span.customer_name=installationItem.customerName
+            span.install_date=installationItem.installDate
+            span.counter_top=installationItem.countertop
+            span.door_name=installationItem.doorName
+            span.customer_address=installationItem.installationAddress

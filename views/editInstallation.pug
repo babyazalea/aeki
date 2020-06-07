@@ -1,4 +1,14 @@
 extends layouts/main
-
+include mixins/installationWriteForm
 block content
-    p edit installation!!!!
+    form(action=routes.editInstallation(installation.id), method="post")
+        table
+                th  Create Date
+                    tr
+                        td
+                            label(for="createDate")
+                            input(type="date", value=dateFormatter("yyyy-MM-dd", installation.createDate), name="createDate")
+                        td(colspan="3")
+                            input(type="submit", value="Edit Installation", required=true)    
+                            a(href=routes.deleteInstallation(installation.id)) Delete Installation
+                +installationWriteForm

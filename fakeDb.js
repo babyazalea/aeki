@@ -42,121 +42,151 @@ export const countertops = [
   {
     type: "third-party",
     name: "타사",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "KARLBY 참나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "KARLBY 자작나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "KARLBY 너도밤나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "KARLBY 호두나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "BARKABODA 호두나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "PINNARP 물푸레나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "PINNARP 호두나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "MÖLLEKULLA 참나무",
+    selected: false,
   },
   {
     type: "vaneer",
     name: "SKOGSÅ 참나무",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 참나무 무늬",
+    selected: false,
   },
   {
     type: "laminate",
     name: "FYNDIG 화이트",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 연한 참나무 무늬",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 화이트 대리석 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 물푸레나무 무늬",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 양면 라이트그레이/화이트",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 라이트그레이 콘크리트 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 콘크리트 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "LILLTRÄSK 화이트",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 화이트 스톤 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 무광 베이지 패턴",
+    selected: false,
   },
   {
     type: "laminate",
     name: "HÄLLESTAD 양면 화이트/알루미늄 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 무광 앤트러싸이트",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 라이트그레이 미네랄효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 블랙 미네랄효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 화이트",
+    selected: false,
   },
   {
     type: "laminate",
     name: "EKBACKEN 다크그레이 대리석 효과",
+    selected: false,
   },
   {
     type: "laminate",
     name: "SÄLJAN 베이지 스톤 효과",
+    selected: false,
   },
   {
     type: "cmw",
     name: "LAXNE 인조대리석",
+    selected: false,
   },
   {
     type: "cmw",
     name: "KASKER 석영대리석",
+    selected: false,
   },
 ];

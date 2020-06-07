@@ -1,5 +1,5 @@
 extends layouts/main
-include mixins/installationBlock
+include mixins/installationListBlock
 
 block content
     form(action=`/installation${routes.searchInstallation}`, method="get")
@@ -8,12 +8,12 @@ block content
         a.create__installation(href=`/installation${routes.createInstallation}`)
             h4.create__installation__text Create Installation
         each item in installations
-            +installationBlock({
+            +installationListBlock({
                 id:item.id,
                 createDate:item.createDate,
                 customerName:item.customerName,
                 installDate:item.installDate,
                 countertop:item.countertop,
                 doorName:item.doorName,
-                costomerAddress:item.customerAddress
+                installationAddress:item.installationAddress
             })
