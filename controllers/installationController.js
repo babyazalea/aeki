@@ -3,6 +3,8 @@ import Installation from "../models/Installation";
 import routes from "../routes";
 import date from "date-format";
 
+// Installation Home
+
 export const installation = async (req, res) => {
   try {
     const installations = await Installation.find({});
@@ -16,15 +18,28 @@ export const installation = async (req, res) => {
   }
 };
 
-export const searchInstallation = (req, res) => {
+// Search Installation
+
+export const searchInstallation = async (req, res) => {
   const {
     query: { term: searchingBy },
   } = req;
+  let installations = [];
+  try {
+    installations = await Installation.find({
+      customerName: { $regex: searchingBy, $options: "i" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
   res.render("searchInstallation", {
     pageTitle: "Search Installation",
     searchingBy,
+    installations,
   });
 };
+
+// Create Installation
 
 export const getCreateInstallation = (req, res) => {
   const installation = [];
@@ -96,6 +111,8 @@ export const postCreateInstallation = async (req, res) => {
   res.redirect(routes.installationDetail(newInstallation.id));
 };
 
+// Installation Detail
+
 export const installationDetail = async (req, res) => {
   const {
     params: { id },
@@ -111,6 +128,8 @@ export const installationDetail = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+// Edit Installation
 
 export const getEditInstallation = async (req, res) => {
   const {
@@ -197,6 +216,8 @@ export const postEditInstallation = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+// Delete Installation
 
 export const deleteInstallation = async (req, res) => {
   const {

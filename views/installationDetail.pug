@@ -1,4 +1,10 @@
 extends layouts/main
 include mixins/installationTable
 block content
-    +installationTable
+    .installation__info
+        +installationTable
+    .installation__comments
+        if installation.comments.length === 1
+            span.installation__comment-number 1 comment
+        else
+            span.installation__comment-number #{installation.comments.length} comment
