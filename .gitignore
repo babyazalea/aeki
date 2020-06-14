@@ -117,3 +117,5 @@ dist
 .pnp.*
 
 pakege-lock.json
+uploads
+static

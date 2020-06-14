@@ -6,9 +6,12 @@ html
                 border:1px solid;
             }
         script(src="https://kit.fontawesome.com/71ed6b386a.js",crossorigin="anonymous")
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&family=Noto+Sans:ital,wght@0,400;1,700&display=swap", rel="stylesheet")
         title #{pageTitle} | #{siteName}
+        link(rel="stylesheet", href="/static/styles.css")
     body
         include ../partials/header
         main
             block content
         include ../partials/footer
+        script(src="/static/main.js")
