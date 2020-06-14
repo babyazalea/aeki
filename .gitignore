@@ -116,6 +116,6 @@ dist
 .yarn/build-state.yml
 .pnp.*
 
-pakege-lock.json
+packege-lock.json
 uploads
 static
