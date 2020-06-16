@@ -12,7 +12,7 @@ export const loacalsMiddleware = (req, res, next) => {
   res.locals.currentDate = date.asString("yyyy-MM-dd", new Date());
 
   res.locals.user = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     id: 1,
   };
   next();

@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  .footer__text {
+    color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
