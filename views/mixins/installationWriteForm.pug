@@ -62,10 +62,13 @@ mixin installationWriteForm
             td.customerLine
                 input(type="text", value=installation.cmwCost, name="cmwCost", required=true)
                 span 원
-    th(colspan="4") 조리대/싱크/쿡탑
+    th(colspan="4") 도어/조리대/싱크/쿡탑
         tr
+            td.customerLine 도어
+            td.customerLine
+                input(type="text", value=installation.doorName, name="doorName", required=true)
             td.customerLine 조리대
-            td.customerLine(colspan="3")
+            td.customerLine
                 select(name="countertop")
                     each item in countertops
                         +countertopBlock({

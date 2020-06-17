@@ -4,9 +4,12 @@ mixin installationTable
                     tr
                         td
                             span.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
-                        td(colspan="3")
+                        td
                             a(href=routes.editInstallation(installation.id))
                                 button Edit Installation 
+                        td(colspan="2")
+                            a(href=routes.deleteInstallation(installation.id))
+                                button Delete Installation
                 th(colspan="4") 고객정보
                     tr
                         td.customerLine 고객명

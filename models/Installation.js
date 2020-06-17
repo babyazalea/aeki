@@ -44,6 +44,7 @@ const InstallationSchema = new mongoose.Schema({
   cmwDate: Date,
   cmwInstallationCost: Number,
   cmwCost: Number,
+  doorName: String,
   countertop: String,
   sink: String,
   tap: String,
