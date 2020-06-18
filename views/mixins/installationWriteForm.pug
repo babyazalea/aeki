@@ -62,18 +62,26 @@ mixin installationWriteForm
             td.customerLine
                 input(type="text", value=installation.cmwCost, name="cmwCost", required=true)
                 span 원
-    th(colspan="4") 도어/조리대/싱크/쿡탑
+    th(colspan="4") 도어 / 조리대 / 싱크 / 쿡탑
         tr
             td.customerLine 도어
             td.customerLine
-                input(type="text", value=installation.doorName, name="doorName", required=true)
+                select(name="doorName")
+                    each item in doors
+                        - var selectedDoorName = installation.doorName;
+                        if(item.name === selectedDoorName)
+                            option(value=item.name selected)=item.name
+                        else
+                            option(value=item.name)=item.name
             td.customerLine 조리대
             td.customerLine
                 select(name="countertop")
                     each item in countertops
-                        +countertopBlock({
-                            name:item.name
-                        })
+                        - var selectedCountertop = installation.countertop;
+                        if(item.name === selectedCountertop)
+                            option(value=item.name selected)=item.name
+                        else
+                            option(value=item.name)=item.name
         tr   
             td.customerLine 싱크 & 수전
             td.customerLine

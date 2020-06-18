@@ -63,10 +63,16 @@ mixin installationTable
                         td.customerLine
                             span.cmw_cost=installation.cmwCost
                             span 원
-                th(colspan="4") 조리대 / 싱크 / 쿡탑
+                th(colspan="4") 도어 / 조리대 / 싱크 / 쿡탑
                     tr
+                        td.customerLine 도어
+                        td.customerLine
+                            if installation.countertop === 'Please Choose an option'
+                                span.error ❓
+                            else
+                                span.door_name=installation.doorName
                         td.customerLine 조리대
-                        td.customerLine(colspan="3")
+                        td.customerLine
                             if installation.countertop === 'Please Choose an option'
                                 span.error ❓
                             else

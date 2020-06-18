@@ -1,4 +1,4 @@
-import { countertops } from "../fakeDb";
+import { countertops, doors } from "../fakeDb";
 import Installation from "../models/Installation";
 import routes from "../routes";
 import date from "date-format";
@@ -46,6 +46,7 @@ export const getCreateInstallation = (req, res) => {
   res.render("createInstallation", {
     pageTitle: "Create Installation",
     countertops,
+    doors,
     installation,
   });
 };
@@ -143,6 +144,7 @@ export const getEditInstallation = async (req, res) => {
     res.render("editInstallation", {
       pageTitle: "Edit Installation",
       countertops,
+      doors,
       installation,
     });
   } catch (error) {
