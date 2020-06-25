@@ -1,4 +1,4 @@
-import { countertops, doors } from "../fakeDb";
+import { countertops, doors, sinks, taps, howToSink } from "../fakeDb";
 import Installation from "../models/Installation";
 import routes from "../routes";
 import date from "date-format";
@@ -47,6 +47,9 @@ export const getCreateInstallation = (req, res) => {
     pageTitle: "Create Installation",
     countertops,
     doors,
+    sinks,
+    taps,
+    howToSink,
     installation,
   });
 };
@@ -145,6 +148,9 @@ export const getEditInstallation = async (req, res) => {
       pageTitle: "Edit Installation",
       countertops,
       doors,
+      sinks,
+      taps,
+      howToSink,
       installation,
     });
   } catch (error) {

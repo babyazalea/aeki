@@ -7,66 +7,66 @@ mixin installationTable
                         td
                             a(href=routes.editInstallation(installation.id))
                                 button Edit Installation 
-                        td(colspan="2")
+                        td(colspan="3")
                             a(href=routes.deleteInstallation(installation.id))
                                 button Delete Installation
-                th(colspan="4") 고객정보
+                th(colspan="5") 고객정보
                     tr
                         td.customerLine 고객명
                         td.customerLine
                             span.installation_customer_name=installation.customerName
-                        td.customerLine 연락처
+                        td.customerLine(colspan="2") 연락처
                         td.customerLine
                             span.installation_customer_phone=installation.customerPhone
                     tr
                         td.customerLine iSell no.
                         td.customerLine
                             span.isell_number=installation.isellNumber
-                        td.customerLine IHP
+                        td.customerLine(colspan="2") IHP
                         td.customerLine 
                             span.ihp_number=installation.ihpNumber
                     tr
                         td.customerLine 주소
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                            span.installation_address=installation.installationAddress
-                th(colspan="4") 서비스 내용
+                th(colspan="5") 서비스 내용
                     tr
                         td.customerLine 예약 배송일
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                             span.reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
                     tr
                         td.customerLine 실제 배송일
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                             if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
                                 span.delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
                             else
                                 span.delivery_date(style="color:red")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
                     tr
                         td.customerLine METOD 설치일
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                             span.installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
                     tr
                         td.customerLine METOD 설치 비용
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                             span.installation_cost=installation.installationCost
                             span 원
                     tr
                         td.customerLine CMW 설치일
-                        td.customerLine(colspan="3")
+                        td.customerLine(colspan="4")
                             span.cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
                     tr
                         td.customerLine CMW 설치 비용
-                        td.customerLine
+                        td.customerLine(colspan="2")
                             span.cmw_installation_cost=installation.cmwInstallationCost
                             span 원
                         td.customerLine CMW 재료 비용
                         td.customerLine
                             span.cmw_cost=installation.cmwCost
                             span 원
-                th(colspan="4") 도어 / 조리대 / 싱크 / 쿡탑
+                th(colspan="5") 도어 / 조리대 / 싱크 / 조명
                     tr
                         td.customerLine 도어
-                        td.customerLine
+                        td.customerLine(colspan="2")
                             if installation.countertop === 'Please Choose an option'
                                 span.error ❓
                             else
@@ -78,43 +78,45 @@ mixin installationTable
                             else
                                 span.countertop_name=installation.countertop
                     tr   
-                        td.customerLine 싱크 & 수전
-                        td.customerLine
+                        td.customerLine(rowspan="2") 싱크 & 수전
+                        td.customerLine(colspan="2")
                             span.sink=installation.sink
-                            span.tap=installation.tap
                         td.customerLine 시공 방식
                         td.customerLine
-                            if installation.howToSink === ''
+                            if installation.howToSink === 'no_how_to_sink'
                                 span.error ❓
                             else if installation.howToSink === 'adhesive'
                                 span.how_to_sink 접착식
                             else if installation.howToSink === 'insertion'
                                 span.how_to_sink 삽입식
-                            else if installation.howToSink === 'thirdParty'
-                                span.how_to_sink 타사
+                            else if installation.howToSink === 'third_party'
+                                span.how_to_sink 타사   
                     tr
-                        td.customerLine 쿡탑
-                        td.customerLine(colspan="3")
-                            span.cooktop=installation.cooktop
-                th(colspan="4") 후드/조명
-                    tr
-                        td.customerLine 후드
-                        td.customerLine
-                            span.hood=installation.hood
+                        td.customerLine(colspan="2")
+                            span.tap=installation.tap
                         td.customerLine 조명
                         td.customerLine
                             if installation.lighting === 'dontLighting'
                                 span.lighting ❌
                             else
                                 span.lighting ⭕
-                th(colspan="4") 변경 사항
+                th(colspan="5") 후드/조명
                     tr
-                        td.customerLine(colspan="4")
+                        td.customerLine 후드
+                        td.customerLine(colspan="2")
+                            span.hood=installation.hood
+                        td.customerLine 쿡탑
+                        td.customerLine
+                            span.cooktop=installation.cooktop
+                        
+                th(colspan="5") 변경 사항
+                    tr
+                        td.customerLine(colspan="5")
                             if installation.changeText === ''
                                 div(style="text-align:center; font-size:50px; margin:0 auto; padding:30px 0;") ❌
                             else
                                 section.changes=installation.changeText
-                th(colspan="3") 미구매
+                th(colspan="4") 미구매
                     td
                         span.unfinished 미구매 없음
                         span.unfinished_check
@@ -126,16 +128,16 @@ mixin installationTable
                                 i.far.fa-square
                     tr
                         td.customerLine article no.
-                        td.customerLine(colspan="3") 제품명
+                        td.customerLine(colspan="4") 제품명
                     tr
                         //- to do: 미구매 아티클 순서대로 표시(mixin 사용)
                         td.customerLine
                             input(type="number", name="articleNumber")
-                        td.customerLine(colspan="3")
-                            input(type="text", name="articleName")
-                th(colspan="4") 특이 사항
-                    tr
                         td.customerLine(colspan="4")
+                            input(type="text", name="articleName")
+                th(colspan="5") 특이 사항
+                    tr
+                        td.customerLine(colspan="5")
                             if installation.singularityText === ''
                                 section.singularity
                                     div(style="text-align:center; font-size:50px; margin:0 auto; padding:30px 0;") ❌
