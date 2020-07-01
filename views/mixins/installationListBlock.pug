@@ -5,5 +5,5 @@ mixin installationListBlock(installationItem ={})
             span.customer_name=installationItem.customerName
             span.counter_top=installationItem.countertop
             span.door_name=installationItem.doorName
-            span.install_date=dateFormatter("yy-MM-dd",installationItem.installDate)
+            span.install_date 설치일: #{dateFormatter("MM-dd",installationItem.installDate)}
             span.customer_address=installationItem.installationAddress
