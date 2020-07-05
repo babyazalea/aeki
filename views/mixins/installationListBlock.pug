@@ -1,9 +1,9 @@
 mixin installationListBlock(installationItem ={})
     .installation__list__block
         a(href=routes.installationDetail(installationItem.id))
-            span.create_date=dateFormatter("yy-MM-dd",installationItem.createDate)
+            span.create_date=dateFormatter("yyyy-MM-dd",installationItem.createDate)
             span.customer_name=installationItem.customerName
             span.counter_top=installationItem.countertop
             span.door_name=installationItem.doorName
-            span.install_date 설치일: #{dateFormatter("MM-dd",installationItem.installDate)}
+            span.install_date 설치일: #{dateFormatter("yyyy-MM-dd",installationItem.installDate)}
             span.customer_address=installationItem.installationAddress
