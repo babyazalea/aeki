@@ -44,11 +44,13 @@
     }
   }
   .installations {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    min-height: 635px;
-    row-gap: 30px;
-
+    height: 635px;
+    div:not(:last-child) {
+      margin-bottom: 20px;
+    }
     .installation__list__block {
       .create_date {
         font-family: Noto Sans;

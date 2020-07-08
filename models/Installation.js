@@ -10,15 +10,15 @@ const InstallationSchema = new mongoose.Schema({
     required: "Custromer Name is required",
   },
   customerPhone: {
-    type: Number,
+    type: String,
     required: "Phone Number is required",
   },
   isellNumber: {
-    type: Number,
+    type: String,
     required: "iSell no. is required",
   },
   ihpNumber: {
-    type: Number,
+    type: String,
     required: "IHP no. is required",
   },
   installationAddress: {
