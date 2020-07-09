@@ -1,6 +1,8 @@
 .footer {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
   .footer__text {
     color: rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
