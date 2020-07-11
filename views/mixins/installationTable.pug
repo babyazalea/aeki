@@ -1,145 +1,153 @@
 mixin installationTable
     table.installtion_table
-                th  Create Date
-                    tr
-                        td
-                            span.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
-                        td
-                            a(href=routes.editInstallation(installation.id))
-                                button Edit Installation 
-                        td(colspan="3")
-                            a(href=routes.deleteInstallation(installation.id))
-                                button Delete Installation
-                th(colspan="5") 고객정보
-                    tr
-                        td.customerLine 고객명
-                        td.customerLine
-                            span.installation_customer_name=installation.customerName
-                        td.customerLine(colspan="2") 연락처
-                        td.customerLine
-                            span.installation_customer_phone=installation.customerPhone
-                    tr
-                        td.customerLine iSell no.
-                        td.customerLine
-                            span.isell_number=installation.isellNumber
-                        td.customerLine(colspan="2") IHP
-                        td.customerLine 
-                            span.ihp_number=installation.ihpNumber
-                    tr
-                        td.customerLine 주소
-                        td.customerLine(colspan="4")
-                           span.installation_address=installation.installationAddress
-                th(colspan="5") 서비스 내용
-                    tr
-                        td.customerLine 예약 배송일
-                        td.customerLine(colspan="4")
-                            span.reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
-                    tr
-                        td.customerLine 실제 배송일
-                        td.customerLine(colspan="4")
-                            if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
-                                span.delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
-                            else
-                                span.delivery_date(style="color:red")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
-                    tr
-                        td.customerLine METOD 설치일
-                        td.customerLine(colspan="4")
-                            span.installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
-                    tr
-                        td.customerLine METOD 설치 비용
-                        td.customerLine(colspan="4")
-                            span.installation_cost=installation.installationCost
-                            span 원
-                    tr
-                        td.customerLine CMW 설치일
-                        td.customerLine(colspan="4")
-                            span.cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
-                    tr
-                        td.customerLine CMW 설치 비용
-                        td.customerLine(colspan="2")
-                            span.cmw_installation_cost=installation.cmwInstallationCost
-                            span 원
-                        td.customerLine CMW 재료 비용
-                        td.customerLine
-                            span.cmw_cost=installation.cmwCost
-                            span 원
-                th(colspan="5") 도어 / 조리대 / 싱크 / 조명
-                    tr
-                        td.customerLine 도어
-                        td.customerLine(colspan="2")
-                            if installation.countertop === 'Please Choose an option'
-                                span.error ❓
-                            else
-                                span.door_name=installation.doorName
-                        td.customerLine 조리대
-                        td.customerLine
-                            if installation.countertop === 'Please Choose an option'
-                                span.error ❓
-                            else
-                                span.countertop_name=installation.countertop
-                    tr   
-                        td.customerLine(rowspan="2") 싱크 & 수전
-                        td.customerLine(colspan="2")
-                            span.sink=installation.sink
-                        td.customerLine 시공 방식
-                        td.customerLine
-                            if installation.howToSink === 'no_how_to_sink'
-                                span.error ❓
-                            else if installation.howToSink === 'adhesive'
-                                span.how_to_sink 접착식
-                            else if installation.howToSink === 'insertion'
-                                span.how_to_sink 삽입식
-                            else if installation.howToSink === 'third_party'
-                                span.how_to_sink 타사   
-                    tr
-                        td.customerLine(colspan="2")
-                            span.tap=installation.tap
-                        td.customerLine 조명
-                        td.customerLine
-                            if installation.lighting === 'dontLighting'
-                                span.lighting ❌
-                            else
-                                span.lighting ⭕
-                th(colspan="5") 후드/조명
-                    tr
-                        td.customerLine 후드
-                        td.customerLine(colspan="2")
-                            span.hood=installation.hood
-                        td.customerLine 쿡탑
-                        td.customerLine
-                            span.cooktop=installation.cooktop
-                        
-                th(colspan="5") 변경 사항
-                    tr
-                        td.customerLine(colspan="5")
-                            if installation.changeText === ''
-                                div(style="text-align:center; font-size:50px; margin:0 auto; padding:30px 0;") ❌
-                            else
-                                section.changes=installation.changeText
+        tbody
+            tr.installation__controller
+                td
+                    span.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
+                td(colspan="4")
+                    a(href=routes.editInstallation(installation.id))
+                        button.edit__installation__btn Edit Installation
+                    a(href=routes.deleteInstallation(installation.id))
+                        button.delete__installation__btn Delete Installation
+            tr.table__header__row
+                th 고객정보
+                th(colspan="4")
+            tr
+                td 고객명
+                td
+                    span.installation_customer_name=installation.customerName
+                td(colspan="2") 연락처
+                td
+                    span.installation_customer_phone=installation.customerPhone
+            tr
+                td iSell no.
+                td
+                    span.isell_number=installation.isellNumber
+                td(colspan="2") IHP
+                td 
+                    span.ihp_number=installation.ihpNumber
+            tr
+                td 주소
+                td(colspan="4")
+                    span.installation_address=installation.installationAddress
+            tr.table__header__row
+                th 서비스 내용
+                th(colspan="4")
+            tr
+                td 예약 배송일
+                td(colspan="4")
+                    span.reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
+            tr
+                td 실제 배송일
+                td(colspan="4")
+                    if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                        span.delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                    else
+                        span.delivery_date(style="color:red")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+            tr
+                td METOD 설치일
+                td(colspan="4")
+                    span.installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
+            tr
+                td METOD 설치 비용
+                td(colspan="4")
+                    span.installation_cost #{installation.installationCost}원
+            tr
+                td CMW 설치일
+                td(colspan="4")
+                    span.cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+            tr
+                td CMW 설치 비용
+                td(colspan="2")
+                    span.cmw_installation_cost #{installation.cmwInstallationCost}원
+                td CMW 재료 비용
+                td
+                    span.cmw_cost #{installation.cmwCost}원
+            tr.table__header__row
+                th 도어 / 조리대 / 싱크 / 조명
+                th(colspan="4")
+            tr
+                td 도어
+                td(colspan="2")
+                    if installation.countertop === 'Please Choose an option'
+                        span.error ❓
+                    else
+                        span.door_name=installation.doorName
+                td 조리대
+                td
+                    if installation.countertop === 'Please Choose an option'
+                        span.error ❓
+                    else
+                        span.countertop_name=installation.countertop
+            tr   
+                td(rowspan="2") 싱크 & 수전
+                td(colspan="2")
+                    span.sink=installation.sink
+                td 시공 방식
+                td
+                    if installation.howToSink === 'no_how_to_sink'
+                        span.error ❓
+                    else if installation.howToSink === 'adhesive'
+                        span.how_to_sink 접착식
+                    else if installation.howToSink === 'insertion'
+                        span.how_to_sink 삽입식
+                    else if installation.howToSink === 'third_party'
+                        span.how_to_sink 타사   
+            tr
+                td(colspan="2")
+                    span.tap=installation.tap
+                td 조명
+                td
+                    if installation.lighting === 'dontLighting'
+                        span.lighting ❌
+                    else
+                        span.lighting ⭕
+            tr.table__header__row
+                th 후드/조명
+                th(colspan="4")
+            tr
+                td 후드
+                td(colspan="2")
+                    span.hood=installation.hood
+                td 쿡탑
+                td
+                    span.cooktop=installation.cooktop
+            tr.table__header__row
+                th 변경 사항
+                th(colspan="4")
+            tr
+                td(colspan="5")
+                    if installation.changeText === ''
+                        div.no__text ❌
+                    else
+                        section.changes=installation.changeText
+            tr.table__header__row
                 th(colspan="4") 미구매
-                    td
-                        span.unfinished 미구매 없음
-                        span.unfinished_check
-                            //- 미구매 없음에 체크하면 installation.unfinished === true
-                            //- 체크하지 않으면, 값이 존재 하지 않게 됌
-                            if installation.unfinished
-                                i.far.fa-check-square
-                            else
-                                i.far.fa-square
-                    tr
-                        td.customerLine article no.
-                        td.customerLine(colspan="4") 제품명
-                    tr
-                        //- to do: 미구매 아티클 순서대로 표시(mixin 사용)
-                        td.customerLine
-                            input(type="number", name="articleNumber")
-                        td.customerLine(colspan="4")
-                            input(type="text", name="articleName")
-                th(colspan="5") 특이 사항
-                    tr
-                        td.customerLine(colspan="5")
-                            if installation.singularityText === ''
-                                section.singularity
-                                    div(style="text-align:center; font-size:50px; margin:0 auto; padding:30px 0;") ❌
-                            else
-                                section.singularity=installation.singularityText
+                td
+                    span.unfinished 미구매 없음
+                    span.unfinished_check
+                        //- 미구매 없음에 체크하면 installation.unfinished === true
+                        //- 체크하지 않으면, 값이 존재 하지 않게 됌
+                        if installation.unfinished
+                            i.far.fa-check-square
+                        else
+                            i.far.fa-square
+            tr
+                td article no.
+                td(colspan="4") 제품명
+            tr
+                //- to do: 미구매 아티클 순서대로 표시(mixin 사용)
+                td
+                    span.not__purchased__article__number=installation.articleNumber
+                td(colspan="4")
+                    span.not__purchased__article__name=installation.articleName
+            tr.table__header__row    
+                th 특이 사항
+                th(colspan="4")
+            tr
+                td(colspan="5")
+                    if installation.singularityText === ''
+                        section.singularity
+                            div.no__text ❌
+                    else
+                        section.singularity=installation.singularityText

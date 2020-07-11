@@ -1,11 +1,12 @@
 .footer {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0);
   .footer__text {
     color: rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 12px;
   }
 }

@@ -3,14 +3,11 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
-}
-body {
   background-color: $backgroundColor;
   color: black;
   font-size: 14px;
   font-family: "Noto Sans KR";
 }
-
 main {
   width: 100%;
   max-width: 1200px;
@@ -20,8 +17,4 @@ main {
 
 main > div {
   padding-top: 100px;
-}
-
-.customerLine {
-  border: 1px solid;
 }

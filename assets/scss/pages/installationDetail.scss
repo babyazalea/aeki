@@ -1,7 +1,59 @@
 .installation__container {
+  padding-top: 50px;
   width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  div {
+    width: 720px;
+  }
+  .installation__info {
+    tr {
+      height: 20px;
+      line-height: 20px;
+    }
+    th {
+      border: 0.5px solid;
+    }
+    td {
+      border: 0.5px solid;
+      text-align: center;
+    }
+    .table__header__row {
+      height: 25px;
+      line-height: 25px;
+      th:first-child {
+        border-right: none;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      th:nth-child(2) {
+        border-left: none;
+      }
+    }
+    .installation__controller {
+      height: 40px;
+      line-height: 40px;
+      td:first-child {
+        text-align: center;
+        span {
+          font-weight: bold;
+        }
+      }
+      .edit__installation__btn {
+        margin: 0 10px;
+      }
+    }
+    .no__text {
+      text-align: center;
+      font-size: 50px;
+      margin: 0 auto;
+      padding: 25px 0 35px 0;
+    }
+  }
+  .installation__comments {
+    margin-top: 20px;
+  }
 }
