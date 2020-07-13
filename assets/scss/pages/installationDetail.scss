@@ -19,18 +19,15 @@
     td {
       border: 0.5px solid;
       text-align: center;
+      vertical-align: middle;
     }
     .table__header__row {
-      height: 25px;
-      line-height: 25px;
+      height: 35px;
       th:first-child {
-        border-right: none;
         font-style: italic;
         font-weight: 700;
         font-size: 15px;
-      }
-      th:nth-child(2) {
-        border-left: none;
+        vertical-align: middle;
       }
     }
     .installation__controller {
