@@ -2,12 +2,15 @@ extends layouts/main
 include mixins/installationWriteForm
 block content
     form(action=`/installation${routes.createInstallation}`, method="post", enctype="multipart/form-data")
-        table
-                th  Create Date
+        div.installation__form__container
+            table.installation__form
+                tbody
                     tr
+                        th  Create Date
+                    tr.installation__controller
                         td
                             label(for="createDate")
                             input(type="date", value=currentDate, name="createDate")
-                        td(colspan="3")
-                            input(type="submit", value="Create Installation", required=true)    
-                +installationWriteForm
+                        td(colspan="4")
+                            button(type="submit", required=true) <i class="fas fa-save"></i>Save Installation
+                    +installationWriteForm

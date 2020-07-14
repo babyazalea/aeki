@@ -1,71 +1,74 @@
 include countertopBlock
 mixin installationWriteForm
-    th(colspan="5") 고객정보
+        tr.table__header__row
+            th(colspan="5") 고객정보
         tr
-            td.customerLine 고객명
-            td.customerLine
+            td 고객명
+            td
                 input(type="text",value=installation.customerName, name="customerName", required=true)
-            td.customerLine 연락처
-            td.customerLine(colspan="2")
+            td 연락처
+            td(colspan="2")
                 input(type="tel",value=installation.customerPhone, name="customerPhone", required=true)
         tr
-            td.customerLine iSell no.
-            td.customerLine
+            td iSell no.
+            td
                 input(type="number",value=installation.isellNumber, name="isellNumber", required=true)
-            td.customerLine IHP
-            td.customerLine(colspan="2")
+            td IHP
+            td(colspan="2")
                 input(type="text",value=installation.ihpNumber, name="ihpNumber", required=true)
         tr
-            td.customerLine 주소
-            td.customerLine(colspan="4")
+            td 주소
+            td(colspan="4")
                 input(type="text",value=installation.installationAddress, name="installationAddress", required=true)
-    th(colspan="5") 서비스 내용
+        tr.table__header__row
+            th(colspan="5") 서비스 내용
         tr
-            td.customerLine 예약 배송일
-            td.customerLine(colspan="4")
+            td 예약 배송일
+            td(colspan="4")
                 if installation.reservationDate
                     input(type="date", value=dateFormatter("yyyy-MM-dd", installation.reservationDate), name="reservationDate", required=true)
                 else
                     input(type="date", value=currentDate, name="reservationDate", required=true)
         tr
-            td.customerLine 실제 배송일
-            td.customerLine(colspan="4")
+            td 실제 배송일
+            td(colspan="4")
                 if installation.deliveryDate
                     input(type="date", value=dateFormatter("yyyy-MM-dd", installation.deliveryDate), name="deliveryDate", required=true)   
                 else
                     input(type="date", value=currentDate, name="deliveryDate", required=true)   
         tr
-            td.customerLine METOD 설치일
-            td.customerLine(colspan="4")
+            td METOD 설치일
+            td(colspan="4")
                 if installation.installaionDate
                     input(type="date", value=dateFormatter("yyyy-MM-dd", installation.installaionDate), name="installaionDate", required=true)
                 else
                     input(type="date", value=currentDate, name="installaionDate", required=true)
         tr
-            td.customerLine METOD 설치 비용
-            td.customerLine(colspan="4")
+            td METOD 설치 비용
+            td(colspan="4")
                 input(type="text", value=installation.installationCost, name="installationCost", required=true)
                 span 원
         tr
-            td.customerLine CMW 설치일
-            td.customerLine(colspan="4")
+            td CMW 설치일
+            td(colspan="4")
                 if installation.cmwDate
                     input(type="text", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
                 else
                     input(type="date", value=currentDate, name="cmwDate", required=true)
         tr
-            td.customerLine CMW 설치 비용
-            td.customerLine(colspan="2")
+            td CMW 설치 비용
+            td(colspan="2")
                 input(type="text", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
                 span 원
-            td.customerLine CMW 재료 비용
-            td.customerLine
+            td CMW 재료 비용
+            td
                 input(type="text", value=installation.cmwCost, name="cmwCost", required=true)
                 span 원
-    th(colspan="5") 도어 / 조리대 / 싱크 / 쿡탑
+        tr.table__header__row
+            th(colspan="5") 도어 / 조리대 / 싱크 / 쿡탑
         tr
-            td.customerLine 도어
-            td.customerLine(colspan="2")
+            td 도어
+            td(colspan="2")
                 select(name="doorName")
                     each item in doors
                         - var selectedDoorName = installation.doorName;
@@ -73,8 +76,8 @@ mixin installationWriteForm
                             option(value=item.name selected)=item.name
                         else
                             option(value=item.name)=item.name
-            td.customerLine 조리대
-            td.customerLine
+            td 조리대
+            td
                 select(name="countertop")
                     each item in countertops
                         - var selectedCountertop = installation.countertop;
@@ -83,8 +86,8 @@ mixin installationWriteForm
                         else
                             option(value=item.name)=item.name
         tr   
-            td.customerLine(rowspan="2") 싱크 & 수전
-            td.customerLine(colspan="2")
+            td(rowspan="2") 싱크 & 수전
+            td(colspan="2")
                 //- input(type="text", value=installation.sink, name="sink", required=true)
                 select(name="sink")
                     each item in sinks
@@ -93,8 +96,8 @@ mixin installationWriteForm
                             option(value=item.name selected)=item.name
                         else
                             option(value=item.name)=item.name
-            td.customerLine 시공 방식
-            td.customerLine
+            td 시공 방식
+            td
                 select(name="howToSink")
                     each item in howToSink
                         - var selectedHowToSink = installation.howToSink;
@@ -103,7 +106,7 @@ mixin installationWriteForm
                         else
                             option(value=item.type)=item.name
         tr
-            td.customerLine(colspan="2")
+            td(colspan="2")
                 select(name="tap")
                     each item in taps
                         - var selectedTap = installation.tap;
@@ -111,8 +114,8 @@ mixin installationWriteForm
                             option(value=item.name selected)=item.name
                         else
                             option(value=item.name)=item.name
-            td.customerLine 조명
-            td.customerLine
+            td 조명
+            td
                 select(name="lighting")
                     - var selectedLighting = installation.lighting;
                     if(selectedLighting === "dontLighting")
@@ -121,19 +124,22 @@ mixin installationWriteForm
                     else
                         option(value="dontLighting") ❌
                         option(value="doLighting" selected) ⭕
-    th(colspan="5") 후드/조명
+        tr.table__header__row
+            th(colspan="5") 후드/조명
         tr
-            td.customerLine 후드
-            td.customerLine
+            td 후드
+            td
                 input(type="text", value=installation.hood, name="hood", required=true)
-            td.customerLine 쿡탑
-            td.customerLine(colspan="2")
+            td 쿡탑
+            td(colspan="2")
                 input(type="text", value=installation.cooktop, name="cooktop", required=true)
-    th(colspan="5") 변경 사항
+        tr.table__header__row
+            th(colspan="5") 변경 사항
         tr
-            td.customerLine(colspan="5")
+            td(colspan="5")
                 textarea(name="changeText")=installation.changeText
-    th(colspan="4") 미구매
+        tr.table__header__row
+            th(colspan="4") 미구매
         td
             label(for="unfinished") 미구매 없음
             if installation.unfinished
@@ -141,22 +147,23 @@ mixin installationWriteForm
             else
                 input(type="checkbox", value="true", name="unfinished")
         tr
-            td.customerLine article no.
-            td.customerLine(colspan="4") 제품명
+            td article no.
+            td(colspan="4") 제품명
         tr
-            td.customerLine
+            td
                 if installation.articleNumber
                     span=installation.articleNumber
                 else
                     input(type="number", name="articleNumber")
-            td.customerLine(colspan="4")
+            td(colspan="4")
                 if installation.articleName
                     span=installation.articleName
                 else
                     input(type="text", name="articleName")
         //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
         //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
-    th(colspan="5") 특이 사항
+        tr.table__header__row
+            th(colspan="5") 특이 사항
         tr
-            td.customerLine(colspan="5")
+            td(colspan="5")
                 textarea(name="singularityText")=installation.singularityText

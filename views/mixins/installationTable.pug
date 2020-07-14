@@ -2,117 +2,92 @@ mixin installationTable
     table.installtion_table
         tbody
             tr.installation__controller
-                td
-                    span.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
+                td.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
                 td(colspan="4")
                     a.edit__installation__btn(href=routes.editInstallation(installation.id)) <i class="fas fa-edit"></i>Edit Installation
                     a.delete__installation__btn(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i>Delete Installation
             tr.table__header__row
-                th(colspan="5")
-                    span 고객정보
+                th(colspan="5") 고객정보
             tr
                 td 고객명
-                td
-                    span.installation_customer_name=installation.customerName
+                td.installation_customer_name=installation.customerName
                 td(colspan="2") 연락처
-                td
-                    span.installation_customer_phone=installation.customerPhone
+                td.installation_customer_phone=installation.customerPhone
             tr
                 td iSell no.
-                td
-                    span.isell_number=installation.isellNumber
+                td.isell_number=installation.isellNumber
                 td(colspan="2") IHP
-                td 
-                    span.ihp_number=installation.ihpNumber
+                td.ihp_number=installation.ihpNumber
             tr
                 td 주소
-                td(colspan="4")
-                    span.installation_address=installation.installationAddress
+                td(colspan="4").installation_address=installation.installationAddress
             tr.table__header__row
-                th(colspan="5")
-                    span 서비스 내용
+                th(colspan="5") 서비스 내용
             tr
                 td 예약 배송일
-                td(colspan="4")
-                    span.reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
+                td(colspan="4").reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
             tr
                 td 실제 배송일
-                td(colspan="4")
-                    if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
-                        span.delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
-                    else
-                        span.delivery_date(style="color:red")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                    td(colspan="4").delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                else
+                    td(colspan="4").delivery_date(style="color:red; border-color:#000;")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
             tr
                 td METOD 설치일
-                td(colspan="4")
-                    span.installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
+                td(colspan="4").installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
             tr
                 td METOD 설치 비용
-                td(colspan="4")
-                    span.installation_cost #{installation.installationCost}원
+                td(colspan="4").installation_cost #{installation.installationCost}원
             tr
                 td CMW 설치일
-                td(colspan="4")
-                    span.cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+                td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
             tr
                 td CMW 설치 비용
-                td(colspan="2")
-                    span.cmw_installation_cost #{installation.cmwInstallationCost}원
+                td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
                 td CMW 재료 비용
-                td
-                    span.cmw_cost #{installation.cmwCost}원
+                td.cmw_cost #{installation.cmwCost}원
             tr.table__header__row
-                th(colspan="5")
-                    span 도어 / 조리대 / 싱크 / 조명
+                th(colspan="5") 도어 / 조리대 / 싱크 / 조명
             tr
                 td 도어
-                td(colspan="2")
-                    if installation.countertop === 'Please Choose an option'
-                        span.error ❓
-                    else
-                        span.door_name=installation.doorName
+                if installation.countertop === 'Please Choose an option'
+                    td(colspan="2").error ❓
+                else
+                    td(colspan="2").door_name=installation.doorName
                 td 조리대
-                td
-                    if installation.countertop === 'Please Choose an option'
-                        span.error ❓
-                    else
-                        span.countertop_name=installation.countertop
+                if installation.countertop === 'Please Choose an option'
+                    td.error ❓
+                else
+                    td.countertop_name=installation.countertop
             tr   
                 td(rowspan="2") 싱크 & 수전
                 td(colspan="2")
                     span.sink=installation.sink
                 td 시공 방식
-                td
-                    if installation.howToSink === 'no_how_to_sink'
-                        span.error ❓
-                    else if installation.howToSink === 'adhesive'
-                        span.how_to_sink 접착식
-                    else if installation.howToSink === 'insertion'
-                        span.how_to_sink 삽입식
-                    else if installation.howToSink === 'third_party'
-                        span.how_to_sink 타사   
+                if installation.howToSink === 'no_how_to_sink'
+                    td.error ❓
+                else if installation.howToSink === 'adhesive'
+                    td.how_to_sink 접착식
+                else if installation.howToSink === 'insertion'
+                    td.how_to_sink 삽입식
+                else if installation.howToSink === 'third_party'
+                    td.how_to_sink 타사   
             tr
-                td(colspan="2")
-                    span.tap=installation.tap
+                td(colspan="2").tap=installation.tap
                 td 조명
-                td
-                    if installation.lighting === 'dontLighting'
-                        span.lighting ❌
-                    else
-                        span.lighting ⭕
+                if installation.lighting === 'dontLighting'
+                    td.lighting ❌
+                else
+                    td.lighting ⭕
             tr.table__header__row
-                th(colspan="5")
-                    span 후드/조명
+                th(colspan="5") 후드/조명
             tr
                 td 후드
-                td(colspan="2")
-                    span.hood=installation.hood
+                td(colspan="2").hood=installation.hood
                 td 쿡탑
-                td
-                    span.cooktop=installation.cooktop
+                td.cooktop=installation.cooktop
             tr.table__header__row
-                th(colspan="5")
-                    span 변경 사항
+                th(colspan="5") 변경 사항
             tr
                 td(colspan="5")
                     if installation.changeText === ''
@@ -120,8 +95,7 @@ mixin installationTable
                     else
                         section.changes=installation.changeText
             tr.table__header__row
-                th(colspan="4")
-                    span 미구매
+                th(colspan="4") 미구매
                 td
                     span.unfinished 미구매 없음
                     span.unfinished_check
@@ -141,8 +115,7 @@ mixin installationTable
                 td(colspan="4")
                     span.not__purchased__article__name=installation.articleName
             tr.table__header__row    
-                th(colspan="5")
-                    span 특이 사항
+                th(colspan="5") 특이 사항
             tr
                 td(colspan="5")
                     if installation.singularityText === ''
