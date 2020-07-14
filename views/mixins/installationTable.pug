@@ -5,10 +5,8 @@ mixin installationTable
                 td
                     span.installation_create_date=dateFormatter("yyyy-MM-dd", installation.createDate)
                 td(colspan="4")
-                    a(href=routes.editInstallation(installation.id))
-                        button.edit__installation__btn Edit Installation
-                    a(href=routes.deleteInstallation(installation.id))
-                        button.delete__installation__btn Delete Installation
+                    a.edit__installation__btn(href=routes.editInstallation(installation.id)) <i class="fas fa-edit"></i>Edit Installation
+                    a.delete__installation__btn(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i>Delete Installation
             tr.table__header__row
                 th(colspan="5")
                     span 고객정보
