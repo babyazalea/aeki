@@ -393,7 +393,7 @@ export const sinks = [
 export const howToSink = [
   {
     type: "no_how_to_sink",
-    name: "Please Choose an optio",
+    name: "Please Choose an option",
   },
   {
     type: "third_party",

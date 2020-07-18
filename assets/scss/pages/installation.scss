@@ -1,13 +1,16 @@
 .installation__wrapper {
-  display: grid;
-  row-gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   padding-top: 100px;
   padding-bottom: 50px;
+  overflow: auto;
   .installation__controll {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    padding-bottom: 30px;
     form {
       margin-right: 50px;
       input {
@@ -46,7 +49,7 @@
   .installations {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     height: 635px;
     div:not(:last-child) {
       margin-bottom: 20px;

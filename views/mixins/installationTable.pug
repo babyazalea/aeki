@@ -97,11 +97,11 @@ mixin installationTable
             tr.table__header__row
                 th(colspan="4") 미구매
                 td
-                    span.unfinished 미구매 없음
-                    span.unfinished_check
-                        //- 미구매 없음에 체크하면 installation.unfinished === true
+                    span.notPurchased 미구매 없음
+                    span.notPurchased_check
+                        //- 미구매 없음에 체크하면 installation.notPurchased === true
                         //- 체크하지 않으면, 값이 존재 하지 않게 됌
-                        if installation.unfinished
+                        if installation.notPurchased
                             i.far.fa-check-square
                         else
                             i.far.fa-square

@@ -1,8 +1,9 @@
 .footer {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  width: 100%;
+  flex: none;
+  padding-top: 30px;
+  text-align: center;
+  // align-self: flex-end;
   .footer__text {
     color: rgba(0, 0, 0, 0.3);
     text-transform: uppercase;

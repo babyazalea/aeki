@@ -1,5 +1,5 @@
 include countertopBlock
-mixin installationWriteForm
+mixin installationForm
         tr.table__header__row
             th(colspan="5") 고객정보
         tr
@@ -16,7 +16,7 @@ mixin installationWriteForm
             td IHP
             td(colspan="2")
                 input(type="text",value=installation.ihpNumber, name="ihpNumber", required=true)
-        tr
+        tr.address__cell
             td 주소
             td(colspan="4")
                 input(type="text",value=installation.installationAddress, name="installationAddress", required=true)
@@ -46,29 +46,29 @@ mixin installationWriteForm
         tr
             td METOD 설치 비용
             td(colspan="4")
-                input(type="text", value=installation.installationCost, name="installationCost", required=true)
+                input(type="number", value=installation.installationCost, name="installationCost", required=true)
                 span 원
         tr
             td CMW 설치일
             td(colspan="4")
                 if installation.cmwDate
-                    input(type="text", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
+                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
                 else
                     input(type="date", value=currentDate, name="cmwDate", required=true)
         tr
             td CMW 설치 비용
             td(colspan="2")
-                input(type="text", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
+                input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
                 span 원
             td CMW 재료 비용
             td
-                input(type="text", value=installation.cmwCost, name="cmwCost", required=true)
+                input(type="number", value=installation.cmwCost, name="cmwCost", required=true)
                 span 원
         tr.table__header__row
             th(colspan="5") 도어 / 조리대 / 싱크 / 쿡탑
         tr
             td 도어
-            td(colspan="2")
+            td(colspan="2").td__having__options.doorName__cell
                 select(name="doorName")
                     each item in doors
                         - var selectedDoorName = installation.doorName;
@@ -77,7 +77,7 @@ mixin installationWriteForm
                         else
                             option(value=item.name)=item.name
             td 조리대
-            td
+            td.td__having__options.countertops__cell
                 select(name="countertop")
                     each item in countertops
                         - var selectedCountertop = installation.countertop;
@@ -85,9 +85,9 @@ mixin installationWriteForm
                             option(value=item.name selected)=item.name
                         else
                             option(value=item.name)=item.name
-        tr   
+        tr
             td(rowspan="2") 싱크 & 수전
-            td(colspan="2")
+            td(colspan="2").td__having__options.sinks__cell
                 //- input(type="text", value=installation.sink, name="sink", required=true)
                 select(name="sink")
                     each item in sinks
@@ -97,7 +97,7 @@ mixin installationWriteForm
                         else
                             option(value=item.name)=item.name
             td 시공 방식
-            td
+            td.td__having__options.howToSink__cell
                 select(name="howToSink")
                     each item in howToSink
                         - var selectedHowToSink = installation.howToSink;
@@ -106,7 +106,7 @@ mixin installationWriteForm
                         else
                             option(value=item.type)=item.name
         tr
-            td(colspan="2")
+            td(colspan="2").td__having__options.taps__cell
                 select(name="tap")
                     each item in taps
                         - var selectedTap = installation.tap;
@@ -115,7 +115,7 @@ mixin installationWriteForm
                         else
                             option(value=item.name)=item.name
             td 조명
-            td
+            td.td__having__options.lighting__cell
                 select(name="lighting")
                     - var selectedLighting = installation.lighting;
                     if(selectedLighting === "dontLighting")
@@ -136,16 +136,16 @@ mixin installationWriteForm
         tr.table__header__row
             th(colspan="5") 변경 사항
         tr
-            td(colspan="5")
+            td(colspan="5").textarea__cell.change__text
                 textarea(name="changeText")=installation.changeText
         tr.table__header__row
             th(colspan="4") 미구매
-        td
-            label(for="unfinished") 미구매 없음
-            if installation.unfinished
-                input(type="checkbox", value="true", name="unfinished", checked)
-            else
-                input(type="checkbox", value="true", name="unfinished")
+            td.not__purchased
+                label(for="notPurchased") 미구매 없음
+                if installation.notPurchased
+                    input(type="checkbox", value="true", name="notPurchased", checked)
+                else
+                    input(type="checkbox", value="true", name="notPurchased")
         tr
             td article no.
             td(colspan="4") 제품명
@@ -165,5 +165,5 @@ mixin installationWriteForm
         tr.table__header__row
             th(colspan="5") 특이 사항
         tr
-            td(colspan="5")
+            td(colspan="5").textarea__cell.singularity__text
                 textarea(name="singularityText")=installation.singularityText
