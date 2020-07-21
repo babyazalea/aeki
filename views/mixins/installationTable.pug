@@ -31,7 +31,7 @@ mixin installationTable
                 if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
                     td(colspan="4").delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
                 else
-                    td(colspan="4").delivery_date(style="color:red; border-color:#000;")=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                    td(colspan="4").difference_delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
             tr
                 td METOD 설치일
                 td(colspan="4").installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
