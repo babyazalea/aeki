@@ -143,9 +143,9 @@ mixin installationForm
             td.not__purchased
                 label(for="notPurchased") 미구매 없음
                 if installation.notPurchased
-                    input(type="checkbox", value="true", name="notPurchased", checked)
+                    input.np__checkbox(type="checkbox", value="true", name="notPurchased", checked)
                 else
-                    input(type="checkbox", value="true", name="notPurchased")
+                    input.np__checkbox(type="checkbox", value="true", name="notPurchased")
         tr
             td article no.
             td(colspan="4") 제품명
