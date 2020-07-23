@@ -138,26 +138,26 @@ mixin installationForm
         tr
             td(colspan="5").textarea__cell.change__text
                 textarea(name="changeText")=installation.changeText
-        tr.table__header__row
+        tr.table__header__row.not__purchased__row
             th(colspan="4") 미구매
-            td.not__purchased
+            td.not__purchased__td
                 label(for="notPurchased") 미구매 없음
                 if installation.notPurchased
                     input.np__checkbox(type="checkbox", value="true", name="notPurchased", checked)
                 else
                     input.np__checkbox(type="checkbox", value="true", name="notPurchased")
-        tr
+        tr.not__purchased__row
             td article no.
             td(colspan="4") 제품명
-        tr
+        tr.not__purchased__row
             td
                 if installation.articleNumber
-                    span=installation.articleNumber
+                    input(type="number", value=installation.articleNumber,name="articleNumber")
                 else
                     input(type="number", name="articleNumber")
             td(colspan="4")
                 if installation.articleName
-                    span=installation.articleName
+                    input(type="text", value=installation.articleName, name="articleName")
                 else
                     input(type="text", name="articleName")
         //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록

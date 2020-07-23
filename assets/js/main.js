@@ -4,6 +4,8 @@ const something = async () => {
   console.log("something");
 };
 
+// Not purchased interaction
+
 const npCheckbox = document.querySelector(".np__checkbox");
 
 const npCheckboxChecked = () => {};
