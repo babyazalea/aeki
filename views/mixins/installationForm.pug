@@ -138,7 +138,7 @@ mixin installationForm
         tr
             td(colspan="5").textarea__cell.change__text
                 textarea(name="changeText")=installation.changeText
-        tr.table__header__row.not__purchased__row
+        tr.table__header__row.not__purchased__header__row
             th(colspan="4") 미구매
             td.not__purchased__td
                 label(for="notPurchased") 미구매 없음
@@ -149,20 +149,21 @@ mixin installationForm
         tr.not__purchased__row
             td article no.
             td(colspan="4") 제품명
-        tr.not__purchased__row
-            td
+                button(type="button").not__purchased__add <i class="fas fa-plus-circle"></i>
+        tr.not__purchased__row.not__purchased__top
+            td.not__purchased__article__number
                 if installation.articleNumber
-                    input(type="number", value=installation.articleNumber,name="articleNumber")
+                    input.not__purchased__input(type="number", value=installation.articleNumber,name="articleNumber")
                 else
-                    input(type="number", name="articleNumber")
-            td(colspan="4")
+                    input.not__purchased__input(type="number", name="articleNumber")
+            td(colspan="4").not__purchased__article__name
                 if installation.articleName
-                    input(type="text", value=installation.articleName, name="articleName")
+                    input.not__purchased__input(type="text", value=installation.articleName, name="articleName")
                 else
-                    input(type="text", name="articleName")
+                    input.not__purchased__input(type="text", name="articleName")
         //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
         //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
-        tr.table__header__row
+        tr.table__header__row.singularity__row
             th(colspan="5") 특이 사항
         tr
             td(colspan="5").textarea__cell.singularity__text
