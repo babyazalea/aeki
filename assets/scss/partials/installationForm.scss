@@ -139,8 +139,32 @@
       background: none;
       i {
         color: $mainBlue;
-        opacity: 0.8;
+        opacity: 0.5;
         cursor: pointer;
+        transition: all 0.2s;
+      }
+      i:hover {
+        opacity: 1;
+      }
+    }
+    .not__purchased__article__name {
+      position: relative;
+      input {
+        width: 85%;
+      }
+    }
+    button.delete__button {
+      position: absolute;
+      right: 5px;
+      top: 1px;
+      height: 100%;
+      cursor: pointer;
+      border: none;
+      background: none;
+      i {
+        pointer-events: none;
+        color: $warningRed;
+        opacity: 0.5;
         transition: all 0.2s;
       }
       i:hover {
@@ -170,9 +194,6 @@
         cursor: not-allowed;
         color: rgba(0, 0, 0, 0.3);
       }
-    }
-    button.delete__button {
-      background-color: red;
     }
   }
 }

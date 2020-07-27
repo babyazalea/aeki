@@ -7,33 +7,49 @@ const something = async () => {
 // Not purchased interaction
 const npHandle = () => {
   const npCheckbox = document.querySelector(".np__checkbox");
-  const npRow = document.querySelectorAll(".not__purchased__row");
-  const npInput = document.querySelectorAll(".not__purchased__input");
+  const npRow = document.getElementsByClassName("not__purchased__row");
+  const npInput = document.getElementsByClassName("not__purchased__input");
   const npAddButton = document.querySelector(".not__purchased__add");
   const npList = document.querySelector(".not__purchased__top");
   const sigularityRow = document.querySelector(".singularity__row");
-
-  const npCheckboxChecked = () => {
-    npRow.forEach((element) => {
-      element.classList.toggle("disabled");
-    });
-    npInput.forEach((element) => {
-      element.toggleAttribute("disabled");
-    });
-    npAddButton.classList.toggle("disabled");
-    npAddButton.toggleAttribute("disabled");
-  };
+  const npdeleteBtn = document.getElementsByClassName("delete__button");
+  let i = 1;
 
   const npListAdd = () => {
-    const btn = document.createElement("button");
+    const button = document.createElement("button");
     const newRow = npList.cloneNode(true);
-    const newTd = newRow
-      .querySelector(".not__purchased__article__name")
-      .appendChild(btn);
-    newTd.classList.add("delete__button");
-    const newList = newTd.parentElement.parentElement;
-    npList.parentElement.insertBefore(newList, sigularityRow);
-    console.log(newList);
+    const newTd = newRow.querySelector(".not__purchased__article__name");
+    const deleteBtn = newTd.appendChild(button);
+    newRow.id = i++;
+    newRow.classList.add("added__row");
+    newRow.querySelectorAll("input").forEach((element) => {
+      element.setAttribute("value", "");
+    });
+    deleteBtn.id = newRow.id;
+    deleteBtn.classList.add("delete__button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.innerHTML = `<i class="fas fa-minus-circle"></i>`;
+
+    npList.parentElement.insertBefore(newRow, sigularityRow);
+
+    deleteBtn.addEventListener("click", npListDelete);
+  };
+
+  const npCheckboxChecked = () => {
+    for (i = 0; i < npRow.length; i++) {
+      npRow[i].classList.toggle("disabled");
+    }
+    for (i = 0; i < npInput.length; i++) {
+      npInput[i].toggleAttribute("disabled");
+    }
+    npAddButton.classList.toggle("disabled");
+    npAddButton.toggleAttribute("disabled");
+    console.log(npdeleteBtn);
+  };
+
+  const npListDelete = (e) => {
+    const targetList = e.target.parentElement.parentElement;
+    targetList.remove();
   };
 
   npCheckbox.addEventListener("change", npCheckboxChecked);
