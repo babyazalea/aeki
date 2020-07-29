@@ -12,7 +12,6 @@ const npHandle = () => {
   const npAddButton = document.querySelector(".not__purchased__add");
   const npList = document.querySelector(".not__purchased__top");
   const sigularityRow = document.querySelector(".singularity__row");
-  const npdeleteBtn = document.getElementsByClassName("delete__button");
   let i = 1;
 
   const npListAdd = () => {
@@ -20,12 +19,10 @@ const npHandle = () => {
     const newRow = npList.cloneNode(true);
     const newTd = newRow.querySelector(".not__purchased__article__name");
     const deleteBtn = newTd.appendChild(button);
-    newRow.id = i++;
     newRow.classList.add("added__row");
     newRow.querySelectorAll("input").forEach((element) => {
       element.setAttribute("value", "");
     });
-    deleteBtn.id = newRow.id;
     deleteBtn.classList.add("delete__button");
     deleteBtn.setAttribute("type", "button");
     deleteBtn.innerHTML = `<i class="fas fa-minus-circle"></i>`;
@@ -44,7 +41,6 @@ const npHandle = () => {
     }
     npAddButton.classList.toggle("disabled");
     npAddButton.toggleAttribute("disabled");
-    console.log(npdeleteBtn);
   };
 
   const npListDelete = (e) => {
