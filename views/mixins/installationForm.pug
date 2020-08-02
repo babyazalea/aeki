@@ -153,14 +153,14 @@ mixin installationForm
         tr.not__purchased__row.not__purchased__top
             td.not__purchased__article__number
                 if installation.articleNumber
-                    input.not__purchased__input(type="number", value=installation.articleNumber,name="articleNumber")
+                    input.not__purchased__input(type="number", value=installation.articleNumber, name="articleNumber")
                 else
-                    input.not__purchased__input(type="number", name="articleNumber")
+                    input.not__purchased__input(type="number", name="articleNumber", value="")
             td(colspan="4").not__purchased__article__name
                 if installation.articleName
                     input.not__purchased__input(type="text", value=installation.articleName, name="articleName")
                 else
-                    input.not__purchased__input(type="text", name="articleName")
+                    input.not__purchased__input(type="text", name="articleName", value="")
         //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
         //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
         tr.table__header__row.singularity__row

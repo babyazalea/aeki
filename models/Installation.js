@@ -54,8 +54,8 @@ const InstallationSchema = new mongoose.Schema({
   lighting: String,
   changeText: String,
   notPurchased: Boolean,
-  articleNumber: Number,
-  articleName: String,
+  articleNumber: [Number],
+  articleName: [String],
   singularityText: String,
   comments: [
     {

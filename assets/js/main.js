@@ -16,18 +16,85 @@ const npHandle = () => {
 
   const npListAdd = () => {
     const button = document.createElement("button");
-    const newRow = npList.cloneNode(true);
-    const newTd = newRow.querySelector(".not__purchased__article__name");
-    const deleteBtn = newTd.appendChild(button);
-    newRow.classList.add("added__row");
-    newRow.querySelectorAll("input").forEach((element) => {
-      element.setAttribute("value", "");
-    });
+    const newRow = document.createElement("tr");
+    const newName = document.createElement("td");
+    const newNumber = document.createElement("td");
+    const newInput1 = document.createElement("input");
+    const newInput2 = document.createElement("input");
+
+    newNumber.classList.add("not__purchased__article__number");
+    newName.classList.add("not__purchased__article__name");
+    newRow.classList.add("not__purchased__row");
+    newRow.append(newNumber);
+    newRow.append(newName);
+
+    // new article number
+    newRow
+      .getElementsByClassName("not__purchased__article__number")
+      .item(0)
+      .append(newInput2);
+    newRow
+      .getElementsByClassName("not__purchased__article__number")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .setAttribute("type", "text");
+    newRow
+      .getElementsByClassName("not__purchased__article__number")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .setAttribute("name", "articleName");
+    newRow
+      .getElementsByClassName("not__purchased__article__number")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .classList.add("not__purchased__input");
+
+    // new article name
+    newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .setAttribute("colspan", "4");
+    newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .append(newInput1);
+    newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .setAttribute("type", "number");
+    newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .setAttribute("name", "articleNumber");
+    newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .getElementsByTagName("input")
+      .item(0)
+      .classList.add("not__purchased__input");
+
+    // delete button
+    const deleteBtn = newRow
+      .getElementsByClassName("not__purchased__article__name")
+      .item(0)
+      .appendChild(button);
+
     deleteBtn.classList.add("delete__button");
     deleteBtn.setAttribute("type", "button");
     deleteBtn.innerHTML = `<i class="fas fa-minus-circle"></i>`;
 
+    // declaration
+
     npList.parentElement.insertBefore(newRow, sigularityRow);
+
+    newRow.classList.add("added__row");
 
     deleteBtn.addEventListener("click", npListDelete);
   };
