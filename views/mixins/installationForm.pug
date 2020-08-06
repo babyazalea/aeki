@@ -141,26 +141,30 @@ mixin installationForm
         tr.table__header__row.not__purchased__header__row
             th(colspan="4") 미구매
             td.not__purchased__td
-                label(for="notPurchased") 미구매 없음
+                label(for="notPurchasedCheck") 미구매 없음
                 if installation.notPurchased
-                    input.np__checkbox(type="checkbox", value="true", name="notPurchased", checked)
+                    input.np__checkbox(type="checkbox", value="true", name="notPurchasedCheck", checked)
                 else
-                    input.np__checkbox(type="checkbox", value="true", name="notPurchased")
+                    input.np__checkbox(type="checkbox", value="true", name="notPurchasedCheck")
         tr.not__purchased__row
             td article no.
             td(colspan="4") 제품명
                 button(type="button").not__purchased__add <i class="fas fa-plus-circle"></i>
-        tr.not__purchased__row.not__purchased__top
-            td.not__purchased__article__number
-                if installation.articleNumber
-                    input.not__purchased__input(type="number", value=installation.articleNumber, name="articleNumber")
-                else
-                    input.not__purchased__input(type="number", name="articleNumber", value="")
-            td(colspan="4").not__purchased__article__name
-                if installation.articleName
-                    input.not__purchased__input(type="text", value=installation.articleName, name="articleName")
-                else
-                    input.not__purchased__input(type="text", name="articleName", value="")
+        if installation.articleNumber
+            each item in installation.articleNumber
+                tr.not__purchased__row.not__purchased__top
+                    td.not__purchased__article__number
+                        input.not__purchased__input(type="number", value=item, name="articleNumber")
+                    td(colspan="4").not__purchased__article__name
+                        input.not__purchased__input(type="text", value="", name="articleName" disabled)
+                        button.delete__button(type="button") <i class="fas fa-minus-circle"></i>
+        else
+            tr.not__purchased__row.not__purchased__top
+                    td.not__purchased__article__number
+                        input.not__purchased__input(type="number", value="", name="articleNumber")
+                    td(colspan="4").not__purchased__article__name
+                        input.not__purchased__input(type="text", value="", name="articleName" disabled)
+                   
         //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
         //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
         tr.table__header__row.singularity__row

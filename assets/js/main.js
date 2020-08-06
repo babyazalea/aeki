@@ -10,8 +10,8 @@ const npHandle = () => {
   const npRow = document.getElementsByClassName("not__purchased__row");
   const npInput = document.getElementsByClassName("not__purchased__input");
   const npAddButton = document.querySelector(".not__purchased__add");
-  const npList = document.querySelector(".not__purchased__top");
   const sigularityRow = document.querySelector(".singularity__row");
+  const deleteBtn = document.getElementsByClassName("delete__button");
   let i = 1;
 
   const npListAdd = () => {
@@ -44,7 +44,7 @@ const npHandle = () => {
       .item(0)
       .getElementsByTagName("input")
       .item(0)
-      .setAttribute("name", "articleName");
+      .setAttribute("name", "articleNumber");
     newRow
       .getElementsByClassName("not__purchased__article__number")
       .item(0)
@@ -72,7 +72,7 @@ const npHandle = () => {
       .item(0)
       .getElementsByTagName("input")
       .item(0)
-      .setAttribute("name", "articleNumber");
+      .setAttribute("name", "articleName");
     newRow
       .getElementsByClassName("not__purchased__article__name")
       .item(0)
@@ -92,7 +92,7 @@ const npHandle = () => {
 
     // declaration
 
-    npList.parentElement.insertBefore(newRow, sigularityRow);
+    sigularityRow.parentElement.insertBefore(newRow, sigularityRow);
 
     newRow.classList.add("added__row");
 
@@ -115,8 +115,15 @@ const npHandle = () => {
     targetList.remove();
   };
 
-  npCheckbox.addEventListener("change", npCheckboxChecked);
-  npAddButton.addEventListener("click", npListAdd);
+  if (npCheckbox) {
+    npCheckbox.addEventListener("change", npCheckboxChecked);
+  }
+  if (npAddButton) {
+    npAddButton.addEventListener("click", npListAdd);
+  }
+  for (i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener("click", npListDelete);
+  }
 };
 
 npHandle();

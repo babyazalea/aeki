@@ -1,7 +1,6 @@
 import { countertops, doors, sinks, taps, howToSink } from "../fakeDb";
 import Installation from "../models/Installation";
 import routes from "../routes";
-import date from "date-format";
 
 // Installation Home
 
@@ -78,9 +77,8 @@ export const postCreateInstallation = async (req, res) => {
       hood,
       lighting,
       changeText,
-      notPurchased,
+      notPurchasedCheck,
       articleNumber,
-      articleName,
       singularityText,
     },
   } = req;
@@ -107,12 +105,11 @@ export const postCreateInstallation = async (req, res) => {
     hood,
     lighting,
     changeText,
-    notPurchased,
+    notPurchasedCheck,
     articleNumber,
-    articleName,
     singularityText,
   });
-  console.log(newInstallation);
+  console.log(req.body);
 
   res.redirect(routes.installationDetail(newInstallation.id));
 };
@@ -184,9 +181,8 @@ export const postEditInstallation = async (req, res) => {
       hood,
       lighting,
       changeText,
-      notPurchased,
+      notPurchasedCheck,
       articleNumber,
-      articleName,
       singularityText,
     },
   } = req;
@@ -216,9 +212,8 @@ export const postEditInstallation = async (req, res) => {
         hood,
         lighting,
         changeText,
-        notPurchased,
+        notPurchasedCheck,
         articleNumber,
-        articleName,
         singularityText,
       }
     );
@@ -227,6 +222,7 @@ export const postEditInstallation = async (req, res) => {
     console.log(error);
     res.redirect(routes.home);
   }
+  console.log();
 };
 
 // Delete Installation

@@ -108,12 +108,12 @@ mixin installationTable
             tr
                 td article no.
                 td(colspan="4") 제품명
-            tr
-                //- to do: 미구매 아티클 순서대로 표시(mixin 사용)
-                td
-                    span.not__purchased__article__number=installation.articleNumber
-                td(colspan="4")
-                    span.not__purchased__article__name=installation.articleName
+            each item in installation.articleNumber
+                tr
+                    td
+                        span.not__purchased__article__number(id=item)=item
+                    td(colspan="4")
+                        span.not__purchased__article__name
             tr.table__header__row    
                 th(colspan="5") 특이 사항
             tr

@@ -53,9 +53,8 @@ const InstallationSchema = new mongoose.Schema({
   hood: String,
   lighting: String,
   changeText: String,
-  notPurchased: Boolean,
+  notPurchasedCheck: Boolean,
   articleNumber: [Number],
-  articleName: [String],
   singularityText: String,
   comments: [
     {
@@ -66,4 +65,5 @@ const InstallationSchema = new mongoose.Schema({
 });
 
 const model = mongoose.model("Installation", InstallationSchema);
+
 export default model;
