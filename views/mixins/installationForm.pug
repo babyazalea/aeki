@@ -48,21 +48,29 @@ mixin installationForm
             td(colspan="4")
                 input(type="number", value=installation.installationCost, name="installationCost", required=true)
                 span 원
-        tr
+        tr.table__header__row
+            th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                if installation.cmwCheck
+                    input.cmw__check(type="checkbox", value=false, name="cmwCheck", checked)
+                    span  )
+                else
+                    input.cmw__check(type="checkbox", value=true, name="cmwCheck")
+                    span  )
+        tr.cmw__row
             td CMW 설치일
             td(colspan="4")
                 if installation.cmwDate
-                    input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
+                    input.cmw__input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
                 else
-                    input(type="date", value=currentDate, name="cmwDate", required=true)
-        tr
+                    input.cmw__input(type="date", value=currentDate, name="cmwDate", required=true)
+        tr.cmw__row
             td CMW 설치 비용
             td(colspan="2")
-                input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
+                input.cmw__input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
                 span 원
             td CMW 재료 비용
             td
-                input(type="number", value=installation.cmwCost, name="cmwCost", required=true)
+                input.cmw__input(type="number", value=installation.cmwCost, name="cmwCost", required=true)
                 span 원
         tr.table__header__row
             th(colspan="5") 도어 / 조리대 / 싱크 / 쿡탑

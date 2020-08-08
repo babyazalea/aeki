@@ -195,8 +195,9 @@
         color: rgba(0, 0, 0, 0.3);
       }
     }
-    fieldset {
-      display: inline-block;
+    .cmw__check {
+      height: 12px;
+      margin-left: 10px;
     }
   }
 }

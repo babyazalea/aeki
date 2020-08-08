@@ -4,6 +4,31 @@ const something = async () => {
   console.log("something");
 };
 
+// cmw interaction
+
+const cmwHandle = () => {
+  const cmwCheckBox = document.querySelector(".cmw__check");
+
+  const cmwChecked = () => {
+    const cmwRow = document.getElementsByClassName("cmw__row");
+    const cmwInput = document.getElementsByClassName("cmw__input");
+    const cmwValue = cmwCheckBox.getAttribute("value");
+
+    cmwCheckBox.nodeValue = !cmwValue;
+
+    for (let i = 0; i < cmwRow.length; i++) {
+      cmwRow[i].classList.toggle("disabled");
+    }
+    for (let i = 0; i < cmwInput.length; i++) {
+      cmwInput[i].toggleAttribute("disabled");
+    }
+  };
+  if (cmwCheckBox) {
+    cmwCheckBox.addEventListener("change", cmwChecked);
+  } else {
+  }
+};
+
 // Not purchased interaction
 const npHandle = () => {
   const npCheckbox = document.querySelector(".np__checkbox");
@@ -126,4 +151,5 @@ const npHandle = () => {
   }
 };
 
+cmwHandle();
 npHandle();

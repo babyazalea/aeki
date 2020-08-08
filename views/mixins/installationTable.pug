@@ -108,10 +108,17 @@ mixin installationTable
             tr
                 td article no.
                 td(colspan="4") 제품명
-            each item in installation.articleNumber
+            if installation.articleNumber
+                each item in installation.articleNumber
+                    tr
+                        td
+                            span.not__purchased__article__number(id=item)=item
+                        td(colspan="4")
+                            span.not__purchased__article__name
+            else
                 tr
                     td
-                        span.not__purchased__article__number(id=item)=item
+                        span.not__purchased__article__number
                     td(colspan="4")
                         span.not__purchased__article__name
             tr.table__header__row    

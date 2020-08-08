@@ -41,6 +41,7 @@ const InstallationSchema = new mongoose.Schema({
     type: Number,
     required: "Installation-Cost is required",
   },
+  cmwCheck: Boolean,
   cmwDate: Date,
   cmwInstallationCost: Number,
   cmwCost: Number,
