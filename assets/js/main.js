@@ -12,9 +12,12 @@ const cmwHandle = () => {
   const cmwChecked = () => {
     const cmwRow = document.getElementsByClassName("cmw__row");
     const cmwInput = document.getElementsByClassName("cmw__input");
-    const cmwValue = cmwCheckBox.getAttribute("value");
 
-    cmwCheckBox.nodeValue = !cmwValue;
+    if (cmwCheckBox.checked) {
+      cmwCheckBox.value = "checked";
+    } else {
+      cmwCheckBox.value = "uncheck";
+    }
 
     for (let i = 0; i < cmwRow.length; i++) {
       cmwRow[i].classList.toggle("disabled");
@@ -125,14 +128,27 @@ const npHandle = () => {
   };
 
   const npCheckboxChecked = () => {
-    for (i = 0; i < npRow.length; i++) {
-      npRow[i].classList.toggle("disabled");
+    if (npCheckbox.checked) {
+      npCheckbox.value = "checked";
+      for (i = 0; i < npRow.length; i++) {
+        npRow[i].classList.add("disabled");
+      }
+      for (i = 0; i < npInput.length; i++) {
+        npInput[i].setAttribute("disabled");
+      }
+      npAddButton.classList.add("disabled");
+      npAddButton.setAttribute("disabled");
+    } else {
+      npCheckbox.value = "uncheck";
+      for (i = 0; i < npRow.length; i++) {
+        npRow[i].classList.remove("disabled");
+      }
+      for (i = 0; i < npInput.length; i++) {
+        npInput[i].removeAttribute("disabled");
+      }
+      npAddButton.classList.remove("disabled");
+      npAddButton.removeAttribute("disabled");
     }
-    for (i = 0; i < npInput.length; i++) {
-      npInput[i].toggleAttribute("disabled");
-    }
-    npAddButton.classList.toggle("disabled");
-    npAddButton.toggleAttribute("disabled");
   };
 
   const npListDelete = (e) => {

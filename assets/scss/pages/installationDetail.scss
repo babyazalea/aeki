@@ -77,6 +77,10 @@
       color: red;
       border-color: #000;
     }
+    tr.disabled {
+      background-color: rgba(0, 0, 0, 0.3);
+      text-decoration: line-through;
+    }
   }
   .installation__comments {
     margin-top: 20px;

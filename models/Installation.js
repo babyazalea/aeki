@@ -41,7 +41,7 @@ const InstallationSchema = new mongoose.Schema({
     type: Number,
     required: "Installation-Cost is required",
   },
-  cmwCheck: Boolean,
+  cmwCheck: String,
   cmwDate: Date,
   cmwInstallationCost: Number,
   cmwCost: Number,
@@ -54,7 +54,7 @@ const InstallationSchema = new mongoose.Schema({
   hood: String,
   lighting: String,
   changeText: String,
-  notPurchasedCheck: Boolean,
+  notPurchasedCheck: String,
   articleNumber: [Number],
   singularityText: String,
   comments: [

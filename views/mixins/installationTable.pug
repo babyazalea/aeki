@@ -38,14 +38,32 @@ mixin installationTable
             tr
                 td METOD 설치 비용
                 td(colspan="4").installation_cost #{installation.installationCost}원
-            tr
-                td CMW 설치일
-                td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
-            tr
-                td CMW 설치 비용
-                td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
-                td CMW 재료 비용
-                td.cmw_cost #{installation.cmwCost}원
+            if installation.cmwCheck === "checked"
+                tr.table__header__row
+                    th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                        input.cmw__check(type="checkbox", value=installation.cmwCheck, name="cmwCheck", checked, disabled)
+                        span  )
+                tr.disabled
+                    td CMW 설치일
+                    td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+                tr.disabled
+                    td CMW 설치 비용
+                    td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
+                    td CMW 재료 비용
+                    td.cmw_cost #{installation.cmwCost}원
+            else
+                tr.table__header__row
+                    th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                        input.cmw__check(type="checkbox", value="uncheck", name="cmwCheck", disabled)
+                        span  )
+                tr
+                    td CMW 설치일
+                    td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+                tr
+                    td CMW 설치 비용
+                    td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
+                    td CMW 재료 비용
+                    td.cmw_cost #{installation.cmwCost}원
             tr.table__header__row
                 th(colspan="5") 도어 / 조리대 / 싱크 / 조명
             tr
@@ -94,33 +112,44 @@ mixin installationTable
                         div.no__text ❌
                     else
                         section.changes=installation.changeText
-            tr.table__header__row
-                th(colspan="4") 미구매
-                td
-                    span.notPurchased 미구매 없음
-                    span.notPurchased_check
-                        //- 미구매 없음에 체크하면 installation.notPurchased === true
-                        //- 체크하지 않으면, 값이 존재 하지 않게 됌
-                        if installation.notPurchased
-                            i.far.fa-check-square
-                        else
-                            i.far.fa-square
-            tr
-                td article no.
-                td(colspan="4") 제품명
-            if installation.articleNumber
-                each item in installation.articleNumber
-                    tr
+            if installation.notPurchasedCheck === "checked"
+                tr.table__header__row
+                    th(colspan="4") 미구매
+                    td
+                        span.notPurchased 미구매 없음
+                        span.notPurchased_check
+                            input(type="checkbox", value=installation.notPurchasedCheck, checked, disabled)
+                tr.disabled
+                    td article no.
+                    td(colspan="4") 제품명
+                tr.disabled
                         td
-                            span.not__purchased__article__number(id=item)=item
+                            span.not__purchased__article__number
                         td(colspan="4")
                             span.not__purchased__article__name
             else
-                tr
+                tr.table__header__row
+                    th(colspan="4") 미구매
                     td
-                        span.not__purchased__article__number
-                    td(colspan="4")
-                        span.not__purchased__article__name
+                        span.notPurchased 미구매 없음
+                        span.notPurchased_check
+                            input(type="checkbox", value=installation.notPurchasedCheck, disabled)
+                tr
+                    td article no.
+                    td(colspan="4") 제품명
+                if installation.articleNumber
+                    each item in installation.articleNumber
+                        tr
+                            td
+                                span.not__purchased__article__number(id=item)=item
+                            td(colspan="4")
+                                span.not__purchased__article__name
+                else
+                    tr
+                        td
+                            span.not__purchased__article__number
+                        td(colspan="4")
+                            span.not__purchased__article__name
             tr.table__header__row    
                 th(colspan="5") 특이 사항
             tr
@@ -130,3 +159,4 @@ mixin installationTable
                             div.no__text ❌
                     else
                         section.singularity=installation.singularityText
+                

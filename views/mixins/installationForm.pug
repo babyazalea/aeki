@@ -48,30 +48,48 @@ mixin installationForm
             td(colspan="4")
                 input(type="number", value=installation.installationCost, name="installationCost", required=true)
                 span 원
-        tr.table__header__row
-            th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
-                if installation.cmwCheck
-                    input.cmw__check(type="checkbox", value=false, name="cmwCheck", checked)
+        if installation.cmwCheck === "checked"
+            tr.table__header__row
+                th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                    input.cmw__check(type="checkbox", value=installation.cmwCheck, name="cmwCheck", checked)
                     span  )
-                else
-                    input.cmw__check(type="checkbox", value=true, name="cmwCheck")
-                    span  )
-        tr.cmw__row
-            td CMW 설치일
-            td(colspan="4")
-                if installation.cmwDate
-                    input.cmw__input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate", required=true)
-                else
-                    input.cmw__input(type="date", value=currentDate, name="cmwDate", required=true)
-        tr.cmw__row
-            td CMW 설치 비용
-            td(colspan="2")
-                input.cmw__input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost", required=true)
-                span 원
-            td CMW 재료 비용
-            td
-                input.cmw__input(type="number", value=installation.cmwCost, name="cmwCost", required=true)
-                span 원
+            tr.cmw__row.disabled
+                td CMW 설치일
+                td(colspan="4")
+                    if installation.cmwDate
+                        input.cmw__input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate")
+                    else
+                        input.cmw__input(type="date", value=currentDate, name="cmwDate")
+            tr.cmw__row.disabled
+                td CMW 설치 비용
+                td(colspan="2")
+                    input.cmw__input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost")
+                    span 원
+                td CMW 재료 비용
+                td
+                    input.cmw__input(type="number", value=installation.cmwCost, name="cmwCost")
+                    span 원
+        else
+            tr.table__header__row
+                th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                    input.cmw__check(type="checkbox", value="uncheck", name="cmwCheck")
+                    span  )     
+            tr.cmw__row
+                td CMW 설치일
+                td(colspan="4")
+                    if installation.cmwDate
+                        input.cmw__input(type="date", value=dateFormatter("yyyy-MM-dd", installation.cmwDate), name="cmwDate")
+                    else
+                        input.cmw__input(type="date", value=currentDate, name="cmwDate")
+            tr.cmw__row
+                td CMW 설치 비용
+                td(colspan="2")
+                    input.cmw__input(type="number", value=installation.cmwInstallationCost, name="cmwInstallationCost")
+                    span 원
+                td CMW 재료 비용
+                td
+                    input.cmw__input(type="number", value=installation.cmwCost, name="cmwCost")
+                    span 원
         tr.table__header__row
             th(colspan="5") 도어 / 조리대 / 싱크 / 쿡탑
         tr
@@ -146,39 +164,62 @@ mixin installationForm
         tr
             td(colspan="5").textarea__cell.change__text
                 textarea(name="changeText")=installation.changeText
-        tr.table__header__row.not__purchased__header__row
-            th(colspan="4") 미구매
-            td.not__purchased__td
-                label(for="notPurchasedCheck") 미구매 없음
-                if installation.notPurchased
-                    input.np__checkbox(type="checkbox", value="true", name="notPurchasedCheck", checked)
-                else
-                    input.np__checkbox(type="checkbox", value="true", name="notPurchasedCheck")
-        tr.not__purchased__row
-            td article no.
-            td(colspan="4") 제품명
-                button(type="button").not__purchased__add <i class="fas fa-plus-circle"></i>
-        if installation.articleNumber
-            each item in installation.articleNumber
-                tr.not__purchased__row.not__purchased__top
-                    td.not__purchased__article__number
-                        input.not__purchased__input(type="number", value=item, name="articleNumber")
-                    td(colspan="4").not__purchased__article__name
-                        input.not__purchased__input(type="text", value="", name="articleName" disabled)
-                        button.delete__button(type="button") <i class="fas fa-minus-circle"></i>
+        if installation.notPurchasedCheck === "checked"
+            tr.table__header__row.not__purchased__header__row
+                th(colspan="4") 미구매
+                td.not__purchased__td
+                    label(for="notPurchasedCheck") 미구매 없음
+                        input.np__checkbox(type="checkbox", value=installation.notPurchasedCheck, name="notPurchasedCheck", checked)
+            tr.not__purchased__row
+                td article no.
+                td(colspan="4") 제품명
+                    button(type="button").not__purchased__add <i class="fas fa-plus-circle"></i>
+            if installation.articleNumber
+                each item in installation.articleNumber
+                    tr.not__purchased__row.not__purchased__top.disabled
+                        td.not__purchased__article__number
+                            input.not__purchased__input(type="number", value=item, name="articleNumber")
+                        td(colspan="4").not__purchased__article__name
+                            input.not__purchased__input(type="text", value="", name="articleName" disabled)
+                            button.delete__button(type="button") <i class="fas fa-minus-circle"></i>
+            else
+                tr.not__purchased__row.not__purchased__top.disabled
+                        td.not__purchased__article__number
+                            input.not__purchased__input(type="number", value="", name="articleNumber")
+                        td(colspan="4").not__purchased__article__name
+                            input.not__purchased__input(type="text", value="", name="articleName" disabled)
         else
-            tr.not__purchased__row.not__purchased__top
-                    td.not__purchased__article__number
-                        input.not__purchased__input(type="number", value="", name="articleNumber")
-                    td(colspan="4").not__purchased__article__name
-                        input.not__purchased__input(type="text", value="", name="articleName" disabled)
-                   
-        //- to do: 더하기 버튼 누르면 행 추가되고, 추가로 미구매 제품 목록 기입 가능하도록
-        //- to do: 미구매 제품의 경우, 또 다른 배열이며 배열을 추가할 수 있어야 함.
+            tr.table__header__row.not__purchased__header__row
+                th(colspan="4") 미구매
+                td.not__purchased__td
+                    label(for="notPurchasedCheck") 미구매 없음
+                        input.np__checkbox(type="checkbox", value="uncheck", name="notPurchasedCheck")
+            tr.not__purchased__row
+                td article no.
+                td(colspan="4") 제품명
+                    button(type="button").not__purchased__add <i class="fas fa-plus-circle"></i>
+            if installation.articleNumber
+                each item in installation.articleNumber
+                    tr.not__purchased__row.not__purchased__top
+                        td.not__purchased__article__number
+                            input.not__purchased__input(type="number", value=item, name="articleNumber")
+                        td(colspan="4").not__purchased__article__name
+                            input.not__purchased__input(type="text", value="", name="articleName" disabled)
+                            button.delete__button(type="button") <i class="fas fa-minus-circle"></i>
+            else
+                tr.not__purchased__row.not__purchased__top
+                        td.not__purchased__article__number
+                            input.not__purchased__input(type="number", value="", name="articleNumber")
+                        td(colspan="4").not__purchased__article__name
+                            input.not__purchased__input(type="text", value="", name="articleName" disabled)
         tr.table__header__row.singularity__row
             th.logging(colspan="5") 특이 사항
         tr
             td(colspan="5").textarea__cell.singularity__text
                 textarea(name="singularityText")=installation.singularityText
+                    
+        
+                   
+                        
                     
                     
