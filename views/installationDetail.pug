@@ -2,6 +2,8 @@ extends layouts/main
 include mixins/installationTable
 block content
     .installation__container
+        .installation__backward__button
+            a(href=routes.installation) <i class="fas fa-arrow-circle-left"></i>
         .installation__info
             +installationTable
         .installation__comments
