@@ -20,6 +20,17 @@ const INSTALLATION_DETAIL = "/:id";
 const EDIT_INSTALLATION = "/:id/edit";
 const DELETE_INSTALLATION = "/:id/delete";
 
+// measurement and plannig
+
+const MNP = "/mnp";
+const SEARCH_MNP = "/search";
+const CREATE_MNP = "/create";
+const MNP_DETAIL = "/:id";
+const EDIT_MNP = "/:id/edit";
+const DELETE_MNP = "/:id/delete";
+
+// routes
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -59,6 +70,12 @@ const routes = {
       return DELETE_INSTALLATION;
     }
   },
+  mnp: MNP,
+  searchMnp: SEARCH_MNP,
+  createMnp: CREATE_MNP,
+  mnpDetail: MNP_DETAIL,
+  editMnp: EDIT_MNP,
+  deleteMnp: DELETE_MNP,
 };
 
 export default routes;
