@@ -157,6 +157,7 @@ export const getEditInstallation = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
 export const postEditInstallation = async (req, res) => {
   const {
     params: { id },
@@ -226,7 +227,6 @@ export const postEditInstallation = async (req, res) => {
     console.log(error);
     res.redirect(routes.home);
   }
-  console.log();
 };
 
 // Delete Installation
