@@ -3,7 +3,7 @@ include mixins/installationListBlock
 
 block content
     .installation__wrapper
-        .installation__controll
+        .installation__control
             form(action=`/installation${routes.searchInstallation}`, method="get")
                 input(type="text", placeholder="Search by term...", name="term")
             a.create__installation(href=`/installation${routes.createInstallation}`)

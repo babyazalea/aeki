@@ -7,6 +7,7 @@ import { loacalsMiddleware } from "./middlewares";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import installationRouter from "./routers/installationRouter";
+import mnpRouter from "./routers/mnpRouter";
 import routes from "./routes";
 
 const app = express();
@@ -25,5 +26,6 @@ app.use(loacalsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.installation, installationRouter);
+app.use(routes.mnp, mnpRouter);
 
 export default app;

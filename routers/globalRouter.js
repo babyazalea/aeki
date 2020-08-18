@@ -9,6 +9,7 @@ import {
   postLogin,
 } from "../controllers/userController";
 import { home } from "../controllers/homeController";
+import { mnp } from "../controllers/mnpController";
 
 const globalRouter = express.Router();
 
@@ -22,5 +23,6 @@ globalRouter.post(routes.login, postLogin);
 
 globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.installation, installation);
+globalRouter.get(routes.mnp, mnp);
 
 export default globalRouter;

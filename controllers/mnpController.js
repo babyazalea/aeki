@@ -4,10 +4,10 @@ import { installation } from "./installationController";
 
 // mnp home
 
-export const Mnp = async (req, res) => {
+export const mnp = async (req, res) => {
   try {
-    const mnp = await Mnp.find({});
-    res.render("mnp", { pageTitle: "Measurement & Planning", mnp });
+    const mnps = await Mnp.find({});
+    res.render("mnp", { pageTitle: "Measurement & Planning", mnps });
   } catch (error) {
     console.log(error);
     res.render("mnp", {

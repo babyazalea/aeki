@@ -73,9 +73,27 @@ const routes = {
   mnp: MNP,
   searchMnp: SEARCH_MNP,
   createMnp: CREATE_MNP,
-  mnpDetail: MNP_DETAIL,
-  editMnp: EDIT_MNP,
-  deleteMnp: DELETE_MNP,
+  mnpDetail: (id) => {
+    if (id) {
+      return `/mnp/${id}`;
+    } else {
+      return MNP_DETAIL;
+    }
+  },
+  editMnp: (id) => {
+    if (id) {
+      return `/mnp/${id}/edit`;
+    } else {
+      return EDIT_MNP;
+    }
+  },
+  deleteMnp: (id) => {
+    if (id) {
+      return `/mnp/${id}/delete`;
+    } else {
+      return DELETE_MNP;
+    }
+  },
 };
 
 export default routes;

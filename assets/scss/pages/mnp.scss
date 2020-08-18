@@ -1,0 +1,38 @@
+.mnp__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .mnp__control {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding-bottom: 30px;
+    form {
+      margin-right: 50px;
+      input {
+        width: 250px;
+        height: 25px;
+        border: none;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+    }
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      height: 25px;
+      border-radius: 10px;
+      color: #fff;
+      background-color: $mainBlue;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.2s;
+      opacity: 0.8;
+    }
+    a:hover {
+      opacity: 1;
+    }
+  }
+}

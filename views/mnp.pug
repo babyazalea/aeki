@@ -1,0 +1,10 @@
+extends layouts/main
+
+block content
+    .mnp__wrapper
+        .mnp__control
+            form(action=`/mnp${routes.searchMnp}`, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+            a.create__mnp(href=`/mnp${routes.createMnp}`)
+                h4 <i class="fas fa-plus-circle"></i> Create Measurement & Planning
+        .mnps
