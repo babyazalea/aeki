@@ -1,4 +1,10 @@
 extends layouts/main
-
+include mixins/mnpForm
 block content
-    p create mnp
+    .mnp__wrapper
+        form(action=`/mnp${routes.createMnp}`, method="post")
+            table.mnp__form
+                tbody
+                    tr.mnp__controller
+                        td  Save Measurement & Planning
+                    +mnpForm
