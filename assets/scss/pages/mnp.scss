@@ -35,4 +35,24 @@
       opacity: 1;
     }
   }
+  tr,
+  th,
+  td {
+    border: 1px solid;
+  }
+}
+.mnp__header__row {
+  th {
+    height: 25px;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 15px;
+    vertical-align: middle;
+  }
+  th:first-child {
+    width: 50px;
+  }
+}
+.etc__row {
+  display: grid;
 }

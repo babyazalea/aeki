@@ -1,10 +1,14 @@
 extends layouts/main
 include mixins/mnpForm
 block content
-    .mnp__wrapper
+    .mnp__form__wrapper
         form(action=`/mnp${routes.createMnp}`, method="post")
             table.mnp__form
                 tbody
                     tr.mnp__controller
-                        td  Save Measurement & Planning
+                        td(colspan=2).create__date
+                            span 생성일:
+                            input(type="date", name="createDate", value=currentDate)
+                        td
+                            button(href="submit") <i class="fas fa-save"></i>Save Measurement & Planning
                     +mnpForm

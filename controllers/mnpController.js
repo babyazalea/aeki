@@ -1,6 +1,7 @@
 import Mnp from "../models/Mnp";
 import routes from "../routes";
 import { installation } from "./installationController";
+import { countertops, doors, sinks, taps } from "../fakeDb";
 
 // mnp home
 
@@ -44,6 +45,10 @@ export const getCreateMnp = (req, res) => {
   const mnp = [];
   res.render("createMnp", {
     pageTitle: "Create Measurement & Planning",
+    countertops,
+    doors,
+    sinks,
+    taps,
     mnp,
   });
 };
@@ -123,6 +128,10 @@ export const getEditMnp = async (req, res) => {
     const mnp = await Mnp.findById(id);
     res.render("editMnp", {
       pageTitle: "Edit Measurement & Planning",
+      countertops,
+      doors,
+      sinks,
+      taps,
       mnp,
     });
   } catch (error) {
