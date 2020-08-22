@@ -1,18 +1,18 @@
 mixin mnpForm
     tr.mnp__header__row
         th 고객명
-        th iSell No.
         th 연락처
         th(colspan=2) 주소
+        th iSell No.
     tr.mnp__row
         td.customer__name
             input(type="text", name="customerName")
-        td.isell__number
-            input(type="number", name="isellNumber")
         td.customer__phone
             input(type="tel", name="customerPhone")
         td.address(colspan=2)
-            input(type="text", name="address")
+            textarea(name="address")
+        td.isell__number
+            input(type="number", name="isellNumber")
     tr.mnp__header__row
         th 예약일
         th 현장 상황
@@ -30,11 +30,11 @@ mixin mnpForm
             select(name="freePlanning")
                 - var selected = mnp.freePlanning
                 if(select === "provided")
-                    option(value="provided" selected) ❌
-                    option(value="notOfferd") ⭕
+                    option(value="provided" selected) ⭕
+                    option(value="notOfferd") ❌
                 else
-                    option(value="provided") ❌
-                    option(value="notOfferd" selected) ⭕
+                    option(value="provided" selected) ⭕
+                    option(value="notOfferd") ❌
         td.manager
             input(type="text", name="manager")
     tr.mnp__header__row

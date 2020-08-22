@@ -13,6 +13,6 @@ block content
                         label(for="createDate")
                         input(type="date", value=dateFormatter("yyyy-MM-dd", installation.createDate), name="createDate")
                     td(colspan="4")
-                        button.save_after_edit(type="submit", required=true) <i class="fas fa-edit"></i>Save after Edit
-                        a(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i>Delete Installation
+                        button.save_after_edit(type="submit", required=true) <i class="fas fa-edit"></i> Edit
+                        a(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i> Delete
                 +installationForm

@@ -4,5 +4,5 @@ mixin mnpListBlock(mnp= {})
             span.create_date=dateFormatter("yyyy-MM-dd", mnp.createDate)
             span.customer_name=mnp.customerName
             span.customer_address=mnp.address
-            span.create_week_number W #{weekNumCalc(mnp.createDate)}
-            span.reservation_date 설치일: #{dateFormatter(mnp.reservationDate)}
+            span.create_week_number W #{weekNumber(mnp.createDate)}
+            span.reservation_date 설치일: #{dateFormatter("yyyy-MM-dd",mnp.reservationDate)}

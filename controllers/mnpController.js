@@ -200,7 +200,7 @@ export const deleteMnp = async (req, res) => {
     params: { id },
   } = req;
   try {
-    await Mnp.findByIdandRemove({
+    await Mnp.findByIdAndRemove({
       _id: id,
     });
   } catch (error) {
