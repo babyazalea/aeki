@@ -6,13 +6,13 @@ mixin mnpForm
         th iSell No.
     tr.mnp__row
         td.customer__name
-            input(type="text", name="customerName")
+            input(type="text", value=mnp.customerName, name="customerName")
         td.customer__phone
-            input(type="tel", name="customerPhone")
+            input(type="tel", value=mnp.customerPhone, name="customerPhone")
         td.address(colspan=2)
-            textarea(name="address")
+            textarea(name="address")=mnp.address
         td.isell__number
-            input(type="number", name="isellNumber")
+            input(type="number", value=mnp.isellNumber, name="isellNumber")
     tr.mnp__header__row
         th 예약일
         th 현장 상황
@@ -21,11 +21,11 @@ mixin mnpForm
         th 담당자
     tr.mnp__row
         td.reservation__date
-            input(type="date", name="reservationDate")
+            input(type="date", value=dateFormatter("yyyy-MM-dd", mnp.reservationDate), name="reservationDate")
         td.site__condition
-            input(type="text", name="siteCondition")
+            input(type="text", value=mnp.siteCondition, name="siteCondition")
         td.site__shape
-            input(type="text", name="siteShape")
+            input(type="text", value=mnp.siteShape, name="siteShape")
         td.free__planning
             select(name="freePlanning")
                 - var selected = mnp.freePlanning
@@ -36,7 +36,7 @@ mixin mnpForm
                     option(value="provided" selected) ⭕
                     option(value="notOfferd") ❌
         td.manager
-            input(type="text", name="manager")
+            input(type="text", value=mnp.manager, name="manager")
     tr.mnp__header__row
         th(colspan=5) 기타 사항
     tr.mnp__row
@@ -72,7 +72,7 @@ mixin mnpForm
     tr.mnp__row
         td.etc__inner 수전
         td(colspan=4)
-            select(naem="tap")
+            select(name="tap")
                 each item in taps
                     -var selectedTap = mnp.tap;
                     if(item.name === selectedTap)
@@ -82,15 +82,15 @@ mixin mnpForm
     tr.mnp__row
         td.etc__inner 가전제품
         td(colspan=4)
-            input(type="text", name="appliance")
+            input(type="text", value=mnp.appliance, name="appliance")
     tr.mnp__row
         td.etc__inner 후드
         td(colspan=4)
-            input(type="text", name="hood")
+            input(type="text", value=mnp.hood, name="hood")
     tr.mnp__row
         td.etc__inner etc
         td(colspan=4)
-            textarea(name="singularityText")
+            textarea(name="singularityText")=mnp.singularityText
         
         
         

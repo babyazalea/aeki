@@ -33,6 +33,7 @@
           width: 90%;
           height: 100%;
           resize: none;
+          font-family: "Noto Sans KR";
         }
       }
     }
@@ -82,6 +83,9 @@
       }
       button:hover {
         opacity: 1;
+      }
+      .save__after__edit {
+        background-color: $green;
       }
     }
   }

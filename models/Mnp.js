@@ -29,14 +29,12 @@ const MnpSchema = new mongoose.Schema({
   siteShape: String,
   freePlanning: String,
   manager: String,
-  etc: {
-    doorName: String,
-    countertop: String,
-    sink: String,
-    tap: String,
-    appliance: String,
-    hood: String,
-  },
+  doorName: String,
+  countertop: String,
+  sink: String,
+  tap: String,
+  appliance: String,
+  hood: String,
   singularityText: String,
 });
 
