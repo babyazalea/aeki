@@ -9,23 +9,40 @@ import {
   getEditInstallation,
   postEditInstallation,
 } from "../controllers/installationController";
-import { uploadInstallation } from "../middlewares";
+import { uploadInstallation, onlyPrivate } from "../middlewares";
 
 const installationRouter = express.Router();
 
 installationRouter.get(routes.searchInstallation, searchInstallation);
 
-installationRouter.get(routes.createInstallation, getCreateInstallation);
+installationRouter.get(
+  routes.createInstallation,
+  onlyPrivate,
+  getCreateInstallation
+);
 installationRouter.post(
   routes.createInstallation,
+  onlyPrivate,
   uploadInstallation,
   postCreateInstallation
 );
 
 installationRouter.get(routes.installationDetail(), installationDetail);
 
-installationRouter.get(routes.editInstallation(), getEditInstallation);
-installationRouter.post(routes.editInstallation(), postEditInstallation);
-installationRouter.get(routes.deleteInstallation(), deleteInstallation);
+installationRouter.get(
+  routes.editInstallation(),
+  onlyPrivate,
+  getEditInstallation
+);
+installationRouter.post(
+  routes.editInstallation(),
+  onlyPrivate,
+  postEditInstallation
+);
+installationRouter.get(
+  routes.deleteInstallation(),
+  onlyPrivate,
+  deleteInstallation
+);
 
 export default installationRouter;

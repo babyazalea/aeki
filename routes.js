@@ -10,6 +10,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANEGE_PASSWORD = "/change-password";
+const ME = "/me";
 
 // Installation
 
@@ -46,6 +47,7 @@ const routes = {
   },
   editProfile: EDIT_PROFILE,
   changePassword: CHANEGE_PASSWORD,
+  me: ME,
   installation: INSTALLATION,
   searchInstallation: SEARCH_INSTALLATION,
   createInstallation: CREATE_INSTALLATION,

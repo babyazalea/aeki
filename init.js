@@ -5,6 +5,7 @@ dotenv.config();
 import "./models/Installation";
 import "./models/Mnp";
 import "./models/Comment";
+import "./models/User";
 
 const PORT = process.env.PORT || 1000;
 
