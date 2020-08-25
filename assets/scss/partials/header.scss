@@ -14,9 +14,12 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     .header__column {
-      i {
+      i.fa-tools {
         color: $mainYellow;
         font-size: 35px;
+      }
+      i.fa-user {
+        font-size: 20px;
       }
       &:first-child {
         justify-self: start;
@@ -31,23 +34,23 @@
         li {
           margin-right: 25px;
           a {
-            display: block;
+            display: flex;
+            justify-content: center;
             width: 80px;
             background-color: $headerTabColor;
             color: rgba(0, 0, 0, 0.7);
             border-radius: 7px;
             box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-weight: 700;
           }
         }
         li:first-child {
           a {
-            width: 45px;
-            height: 45px;
+            display: flex;
+            align-items: center;
+            width: 40px;
+            height: 40px;
             border-radius: 22.5px;
-            line-height: 45px;
-            font-size: 12px;
+            font-size: 13px;
           }
         }
         li:last-child {

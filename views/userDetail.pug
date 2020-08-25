@@ -2,5 +2,9 @@ extends layouts/main
 
 block content
     .user__info
-        .user__info__header
+        .user__info__icon
+            h4
+                i.fas.fa-user-circle
+        .user__info__text
             h4=user.name
+            h4=user.email

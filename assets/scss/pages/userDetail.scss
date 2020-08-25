@@ -1,0 +1,26 @@
+.user__info {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div:not(:last-child) {
+    padding-bottom: 50px;
+  }
+  .user__info__icon {
+    h4 {
+      i {
+        font-size: 50px;
+      }
+    }
+  }
+  .user__info__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h4:not(:last-child) {
+      padding-bottom: 10px;
+    }
+  }
+}

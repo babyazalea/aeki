@@ -7,11 +7,15 @@ header.header
             ul
                 if !loggedUser
                     li
-                        a(href=routes.join) JOIN
+                        a(href=routes.join)
+                            span JOIN
                     li
-                        a(href=routes.login) LOG IN
+                        a(href=routes.login)
+                         span LOG IN
                 else
                     li
-                        a(href=routes.me) PROFILE
+                        a(href=routes.me)
+                            span=loggedUser.name
                     li
-                        a(href=routes.logout) LOG OUT
+                        a(href=routes.logout)
+                            span LOG OUT
