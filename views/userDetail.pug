@@ -1,5 +1,6 @@
 extends layouts/main
-
+include mixins/installationListBlock
+include mixins/mnpListBlock
 block content
     .user__info
         .user__info__icon
@@ -8,10 +9,32 @@ block content
         .user__info__text
             h4=user.name
             h4=user.email
-            .user__profile__buttons
-                if loggedUser
-                    if user.id === loggedUser.id
-                            a(href=`/users${routes.editProfile}`)
-                                button Edit Profile
-                            a(href=`/users${routes.changePassword}`)
-                                button Change Password
+        .user__profile__buttons
+            if loggedUser
+                if user.id === loggedUser.id
+                        a(href=`/users${routes.editProfile}`)
+                            button Edit Profile
+                        a(href=`/users${routes.changePassword}`)
+                            button Change Password
+        .user__installations
+            each item in user.installations
+                +installationListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    installDate:item.installDate,
+                    countertop:item.countertop,
+                    doorName:item.doorName,
+                    installationAddress:item.installationAddress
+                })
+        .user__mnps
+            each item in user.mnps
+                +mnpListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    customerPhone:item.customerPhone,
+                    isellNumber:item.isellNumber,
+                    address:item.address,
+                    reservationDate:item.reservationDate
+                })
