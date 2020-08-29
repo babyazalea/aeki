@@ -8,3 +8,10 @@ block content
         .user__info__text
             h4=user.name
             h4=user.email
+            .user__profile__buttons
+                if loggedUser
+                    if user.id === loggedUser.id
+                            a(href=`/users${routes.editProfile}`)
+                                button Edit Profile
+                            a(href=`/users${routes.changePassword}`)
+                                button Change Password

@@ -9,6 +9,11 @@ block content
                 span 생성일:
                 span=dateFormatter("yyyy-MM-dd",mnp.createDate)
             .button__container
-                a.edit__mnp__btn(href=routes.editMnp(mnp.id)) <i class="fas fa-edit"></i>Edit
-                a.delete__mnp__btn(href=routes.deleteMnp(mnp.id)) <i class="fas fa-trash-alt"></i>Delete
+                if loggedUser
+                    if mnp.creator.id === loggedUser.id
+                        a.edit__mnp__btn(href=routes.editMnp(mnp.id)) <i class="fas fa-edit"></i>Edit
+                        a.delete__mnp__btn(href=routes.deleteMnp(mnp.id)) <i class="fas fa-trash-alt"></i>Delete
         +mnpTable
+        .mnp__creator
+            |Created by 
+            a(href=routes.userDetail(mnp.creator.id))=mnp.creator.name

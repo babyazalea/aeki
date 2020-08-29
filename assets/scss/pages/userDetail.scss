@@ -23,4 +23,28 @@
       padding-bottom: 10px;
     }
   }
+  .user__profile__buttons {
+    display: flex;
+    flex-direction: column;
+    a:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: $mainBlue;
+      width: 150px;
+      height: 25px;
+      color: #fff;
+      text-align: center;
+      line-height: 25px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      opacity: 0.8;
+      transition: all 0.2s;
+    }
+    button:hover {
+      opacity: 1;
+    }
+  }
 }

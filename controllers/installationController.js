@@ -110,9 +110,10 @@ export const postCreateInstallation = async (req, res) => {
     notPurchasedCheck,
     articleNumber,
     singularityText,
+    creator: req.user.id,
   });
-  console.log(req.body);
-
+  req.user.installations.push(newInstallation.id);
+  req.user.save();
   res.redirect(routes.installationDetail(newInstallation.id));
 };
 
@@ -123,7 +124,7 @@ export const installationDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const installation = await Installation.findById(id);
+    const installation = await Installation.findById(id).populate("creator");
     res.render("installationDetail", {
       pageTitle: "Installation Detail",
       installation,
@@ -143,15 +144,19 @@ export const getEditInstallation = async (req, res) => {
 
   try {
     const installation = await Installation.findById(id);
-    res.render("editInstallation", {
-      pageTitle: "Edit Installation",
-      countertops,
-      doors,
-      sinks,
-      taps,
-      howToSink,
-      installation,
-    });
+    if (installation.creator !== req.user.id) {
+      throw Error();
+    } else {
+      res.render("editInstallation", {
+        pageTitle: "Edit Installation",
+        countertops,
+        doors,
+        sinks,
+        taps,
+        howToSink,
+        installation,
+      });
+    }
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -236,9 +241,14 @@ export const deleteInstallation = async (req, res) => {
     params: { id },
   } = req;
   try {
-    await Installation.findByIdAndRemove({
-      _id: id,
-    });
+    const installtion = await Installation.findById(id);
+    if (installation.creator !== req.user.id) {
+      throw Error();
+    } else {
+      await Installation.findByIdAndRemove({
+        _id: id,
+      });
+    }
   } catch (error) {
     console.log(error);
   }

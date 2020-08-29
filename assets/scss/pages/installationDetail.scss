@@ -105,6 +105,13 @@
       text-decoration: line-through;
     }
   }
+  .installation__creator {
+    margin-top: 20px;
+    text-align: right;
+    a {
+      color: $mainBlue;
+    }
+  }
   .installation__comments {
     margin-top: 20px;
   }

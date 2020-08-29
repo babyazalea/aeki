@@ -36,6 +36,16 @@ const MnpSchema = new mongoose.Schema({
   appliance: String,
   hood: String,
   singularityText: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const model = mongoose.model("Mnp", MnpSchema);

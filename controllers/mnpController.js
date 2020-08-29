@@ -94,8 +94,10 @@ export const postCreateMnp = async (req, res) => {
     appliance,
     hood,
     singularityText,
+    creator: req.user.id,
   });
-
+  req.user.mnps.push(newMnp.id);
+  req.user.save();
   res.redirect(routes.mnpDetail(newMnp.id));
 };
 
@@ -106,7 +108,7 @@ export const mnpDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const mnp = await Mnp.findById(id);
+    const mnp = await Mnp.findById(id).populate("creator");
     res.render("mnpDetail", {
       pageTitle: "Measurement & Planning Detail",
       mnp,
@@ -126,14 +128,18 @@ export const getEditMnp = async (req, res) => {
 
   try {
     const mnp = await Mnp.findById(id);
-    res.render("editMnp", {
-      pageTitle: "Edit Measurement & Planning",
-      countertops,
-      doors,
-      sinks,
-      taps,
-      mnp,
-    });
+    if (mnp.creator !== req.user.id) {
+      throw Error();
+    } else {
+      res.render("editMnp", {
+        pageTitle: "Edit Measurement & Planning",
+        countertops,
+        doors,
+        sinks,
+        taps,
+        mnp,
+      });
+    }
   } catch (error) {
     console.log(error);
     res.redirect(routes.home);
@@ -200,9 +206,14 @@ export const deleteMnp = async (req, res) => {
     params: { id },
   } = req;
   try {
-    await Mnp.findByIdAndRemove({
-      _id: id,
-    });
+    const mnp = await Mnp.findById(id);
+    if (mnp.creator !== req.user.id) {
+      throw Error();
+    } else {
+      await Mnp.findByIdAndRemove({
+        _id: id,
+      });
+    }
   } catch (error) {
     console.log(error);
   }
