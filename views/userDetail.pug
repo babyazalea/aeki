@@ -1,6 +1,4 @@
 extends layouts/main
-include mixins/installationListBlock
-include mixins/mnpListBlock
 block content
     .user__info
         .user__info__icon
@@ -16,25 +14,18 @@ block content
                             button Edit Profile
                         a(href=`/users${routes.changePassword}`)
                             button Change Password
-        .user__installations
-            each item in user.installations
-                +installationListBlock({
-                    id:item.id,
-                    createDate:item.createDate,
-                    customerName:item.customerName,
-                    installDate:item.installDate,
-                    countertop:item.countertop,
-                    doorName:item.doorName,
-                    installationAddress:item.installationAddress
-                })
-        .user__mnps
-            each item in user.mnps
-                +mnpListBlock({
-                    id:item.id,
-                    createDate:item.createDate,
-                    customerName:item.customerName,
-                    customerPhone:item.customerPhone,
-                    isellNumber:item.isellNumber,
-                    address:item.address,
-                    reservationDate:item.reservationDate
-                })
+        .created__by__user
+            .user__installations
+                h4 설치 구매
+                each installation in user.installations
+                    .installation__list__block
+                        a(href=routes.installationDetail(installation.id))
+                            span.create_date=dateFormatter("yyyy-MM-dd",installation.createDate)
+                            span.customer_name 고객명: #{installation.customerName}
+            .user__mnps
+                h4 실측/플래닝
+                each mnp in user.mnps
+                    .mnp__list__block
+                        a(href=routes.mnpDetail(mnp.id))
+                            span.create_date=dateFormatter("yyyy-MM-dd", mnp.createDate)
+                            span.customer_name 고객명: #{mnp.customerName}
