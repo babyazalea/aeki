@@ -122,12 +122,16 @@ export const postCreateInstallation = async (req, res) => {
 export const installationDetail = async (req, res) => {
   const {
     params: { id },
+    user,
   } = req;
   try {
-    const installation = await Installation.findById(id).populate("creator");
+    const installation = await Installation.findById(id)
+      .populate("creator")
+      .populate({ path: "comments", populate: { path: "creator" } });
     res.render("installationDetail", {
       pageTitle: "Installation Detail",
       installation,
+      user,
     });
   } catch (error) {
     console.log(error);

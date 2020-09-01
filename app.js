@@ -12,6 +12,7 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import installationRouter from "./routers/installationRouter";
 import mnpRouter from "./routers/mnpRouter";
+import apiRouter from "./routers/apiRouter";
 import routes from "./routes";
 
 import "./passport";
@@ -45,5 +46,6 @@ app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.installation, installationRouter);
 app.use(routes.mnp, mnpRouter);
+app.use(routes.api, apiRouter);
 
 export default app;

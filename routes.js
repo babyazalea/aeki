@@ -30,6 +30,11 @@ const MNP_DETAIL = "/:id";
 const EDIT_MNP = "/:id/edit";
 const DELETE_MNP = "/:id/delete";
 
+// API
+
+const API = "/api";
+const ADD__COMMENT = "/:id/comment";
+
 // routes
 
 const routes = {
@@ -96,6 +101,8 @@ const routes = {
       return DELETE_MNP;
     }
   },
+  api: API,
+  addComment: ADD__COMMENT,
 };
 
 export default routes;

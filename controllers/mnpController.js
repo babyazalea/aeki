@@ -108,7 +108,9 @@ export const mnpDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const mnp = await Mnp.findById(id).populate("creator");
+    const mnp = await Mnp.findById(id)
+      .populate("creator")
+      .populate({ path: "comments", populate: { path: "creator" } });
     res.render("mnpDetail", {
       pageTitle: "Measurement & Planning Detail",
       mnp,

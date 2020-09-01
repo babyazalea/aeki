@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  div {
+    width: 720px;
+  }
   .mnp__backward__button {
     position: absolute;
     left: 130px;
@@ -26,12 +29,10 @@
     }
   }
   .mnp__controller {
+    text-align: center;
     margin-bottom: 50px;
-    div {
-      display: inline-block;
-    }
     .create__date {
-      margin-right: 20px;
+      margin-bottom: 20px;
       span {
         margin-right: 10px;
       }

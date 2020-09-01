@@ -1,5 +1,6 @@
 extends layouts/main
 include mixins/mnpTable
+include mixins/comment
 block content
     .mnp__table__wrapper
         .mnp__backward__button
@@ -17,3 +18,4 @@ block content
         .mnp__creator
             |Created by 
             a(href=routes.userDetail(mnp.creator.id))=mnp.creator.name
+        +comment(mnp)

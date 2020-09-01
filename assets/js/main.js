@@ -1,4 +1,5 @@
 import "../scss/styles.scss";
+import "./addComment";
 
 const something = async () => {
   console.log("something");
@@ -26,6 +27,7 @@ const cmwHandle = () => {
       cmwInput[i].toggleAttribute("disabled");
     }
   };
+
   if (cmwCheckBox) {
     cmwCheckBox.addEventListener("change", cmwChecked);
   } else {
