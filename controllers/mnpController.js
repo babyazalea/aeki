@@ -129,8 +129,8 @@ export const getEditMnp = async (req, res) => {
   } = req;
 
   try {
-    const mnp = await Mnp.findById(id);
-    if (mnp.creator !== req.user.id) {
+    const mnp = await Mnp.findById(id).populate("creator");
+    if (mnp.creator.id !== req.user.id) {
       throw Error();
     } else {
       res.render("editMnp", {

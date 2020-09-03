@@ -34,6 +34,7 @@ const DELETE_MNP = "/:id/delete";
 
 const API = "/api";
 const ADD__COMMENT = "/:id/comment";
+const DELETE__COMMENT = "/:id/comment/:commentId/delete";
 
 // routes
 
@@ -103,6 +104,7 @@ const routes = {
   },
   api: API,
   addComment: ADD__COMMENT,
+  deleteComment: DELETE__COMMENT,
 };
 
 export default routes;

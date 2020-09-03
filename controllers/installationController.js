@@ -147,8 +147,8 @@ export const getEditInstallation = async (req, res) => {
   } = req;
 
   try {
-    const installation = await Installation.findById(id);
-    if (installation.creator !== req.user.id) {
+    const installation = await Installation.findById(id).populate("creator");
+    if (installation.creator.id !== req.user.id) {
       throw Error();
     } else {
       res.render("editInstallation", {
@@ -245,8 +245,8 @@ export const deleteInstallation = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const installtion = await Installation.findById(id);
-    if (installation.creator !== req.user.id) {
+    const installation = await Installation.findById(id).populate("creator");
+    if (installation.creator.id !== req.user.id) {
       throw Error();
     } else {
       await Installation.findByIdAndRemove({
