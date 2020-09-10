@@ -208,8 +208,8 @@ export const deleteMnp = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const mnp = await Mnp.findById(id);
-    if (mnp.creator !== req.user.id) {
+    const mnp = await Mnp.findById(id).populate("creator");
+    if (mnp.creator.id !== req.user.id) {
       throw Error();
     } else {
       await Mnp.findByIdAndRemove({

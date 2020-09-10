@@ -1,7 +1,7 @@
 // Global
-const HOME = "/";
+const HOME_LOGIN = "/";
+const HOME = "/home";
 const JOIN = "/join";
-const LOGIN = "/login";
 const LOGOUT = "/logout";
 
 // Users
@@ -39,9 +39,9 @@ const DELETE__COMMENT = "/:id/comment/:commentId/delete";
 // routes
 
 const routes = {
+  homeLogin: HOME_LOGIN,
   home: HOME,
   join: JOIN,
-  login: LOGIN,
   logout: LOGOUT,
   users: USERS,
   userDetail: (id) => {

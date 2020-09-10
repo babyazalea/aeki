@@ -1,9 +1,6 @@
-import multer from "multer";
 import routes from "./routes";
 import date from "date-format";
 import { weekNumber } from "weeknumber";
-
-const multerInstallation = multer({ dest: "uploads/installations/" });
 
 export const loacalsMiddleware = (req, res, next) => {
   res.locals.siteName = "AEKI";
@@ -32,5 +29,3 @@ export const onlyPrivate = (req, res, next) => {
     res.redirect(routes.home);
   }
 };
-
-export const uploadInstallation = multerInstallation.array();

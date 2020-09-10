@@ -9,7 +9,7 @@ import {
   getEditInstallation,
   postEditInstallation,
 } from "../controllers/installationController";
-import { uploadInstallation, onlyPrivate } from "../middlewares";
+import { onlyPrivate } from "../middlewares";
 
 const installationRouter = express.Router();
 
@@ -23,7 +23,6 @@ installationRouter.get(
 installationRouter.post(
   routes.createInstallation,
   onlyPrivate,
-  uploadInstallation,
   postCreateInstallation
 );
 
