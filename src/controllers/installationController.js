@@ -83,38 +83,43 @@ export const postCreateInstallation = async (req, res) => {
       singularityText,
     },
   } = req;
-  const newInstallation = await Installation.create({
-    createDate,
-    customerName,
-    customerPhone,
-    isellNumber,
-    ihpNumber,
-    installationAddress,
-    reservationDate,
-    deliveryDate,
-    installaionDate,
-    installationCost,
-    cmwCheck,
-    cmwDate,
-    cmwInstallationCost,
-    cmwCost,
-    doorName,
-    countertop,
-    sink,
-    tap,
-    howToSink,
-    cooktop,
-    hood,
-    lighting,
-    changeText,
-    notPurchasedCheck,
-    articleNumber,
-    singularityText,
-    creator: req.user.id,
-  });
-  req.user.installations.push(newInstallation.id);
-  req.user.save();
-  res.redirect(routes.installationDetail(newInstallation.id));
+  try {
+    const newInstallation = await Installation.create({
+      createDate,
+      customerName,
+      customerPhone,
+      isellNumber,
+      ihpNumber,
+      installationAddress,
+      reservationDate,
+      deliveryDate,
+      installaionDate,
+      installationCost,
+      cmwCheck,
+      cmwDate,
+      cmwInstallationCost,
+      cmwCost,
+      doorName,
+      countertop,
+      sink,
+      tap,
+      howToSink,
+      cooktop,
+      hood,
+      lighting,
+      changeText,
+      notPurchasedCheck,
+      articleNumber,
+      singularityText,
+      creator: req.user.id,
+    });
+    req.user.installations.push(newInstallation.id);
+    req.user.save();
+    res.redirect(routes.installationDetail(newInstallation.id));
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 // Installation Detail

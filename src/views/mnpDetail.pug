@@ -14,6 +14,9 @@ block content
                     if mnp.creator.id === loggedUser.id
                         a.edit__mnp__btn(href=routes.editMnp(mnp.id)) <i class="fas fa-edit"></i>Edit
                         a.delete__mnp__btn(href=routes.deleteMnp(mnp.id)) <i class="fas fa-trash-alt"></i>Delete
+                button.copy__btn(data-clipboard-target=".mnp__table")#copy
+                    i.fas.fa-copy
+                    span Copy
         +mnpTable
         .mnp__creator
             |Created by 
