@@ -1,6 +1,5 @@
 import Mnp from "../models/Mnp";
 import routes from "../routes";
-import { installation } from "./installationController";
 import { countertops, doors, sinks, taps } from "../fakeDb";
 
 // mnp home
@@ -22,11 +21,11 @@ export const mnp = async (req, res) => {
 
 export const searchMnp = async (req, res) => {
   const {
-    query: { term: serchingBy },
+    query: { term: searchingBy },
   } = req;
   let mnp = [];
   try {
-    installation = await installation.find({
+    mnp = await Mnp.find({
       customerName: { $regex: searchingBy, $options: "i" },
     });
   } catch (error) {
@@ -34,7 +33,7 @@ export const searchMnp = async (req, res) => {
   }
   res.render("searchMnp", {
     pageTitle: "Search Measurement & Planning",
-    serchingBy,
+    searchingBy,
     mnp,
   });
 };
