@@ -1,7 +1,7 @@
 extends layouts/main
 include mixins/installationListBlock
 block content
-    .search__installation__wrapper
+    .search__wrapper
         .search__backward__button
             button#backward
                 i.fas.fa-arrow-circle-left
@@ -21,3 +21,4 @@ block content
                     doorName:item.doorName,
                     installationAddress:item.installationAddress
                 })
+        

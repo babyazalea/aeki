@@ -1,7 +1,7 @@
 const backwardBtn = document.querySelector("#backward");
 
 const backward = () => {
-  window.history.back();
+  history.back();
 };
 
 if (backwardBtn) {

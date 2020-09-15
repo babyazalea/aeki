@@ -30,6 +30,18 @@
     button:hover {
       color: rgba(0, 0, 0, 0.7);
     }
+    a {
+      width: 30px;
+      height: 30px;
+      color: rgba(0, 0, 0, 0.3);
+      transition: color 0.2s;
+      i {
+        font-size: 30px;
+      }
+    }
+    a:hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
   }
   .mnp__controller {
     text-align: center;

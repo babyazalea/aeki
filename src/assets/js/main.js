@@ -6,3 +6,4 @@ import "./deleteComment";
 import "./homeAlert";
 import "./copy";
 import "./backward";
+import "./searchBackward";
