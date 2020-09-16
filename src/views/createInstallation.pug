@@ -2,6 +2,7 @@ extends layouts/main
 include mixins/installationForm
 block content
     .installation__form__container
+        .installation__backward__button
         form(action=`/installation${routes.createInstallation}`, method="post")
                 table.installation__form
                     tbody

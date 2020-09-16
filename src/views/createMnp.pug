@@ -3,7 +3,6 @@ include mixins/mnpForm
 block content
     .mnp__form__wrapper
         .mnp__backward__button
-            a(href=routes.mnp) <i class="fas fa-arrow-circle-left"></i>
         form(action=`/mnp${routes.createMnp}`, method="post")
             table.mnp__form
                 tbody
